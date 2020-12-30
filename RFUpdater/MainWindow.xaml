@@ -24,6 +24,8 @@
                     <StackPanel Margin="5,55,0,5">
                         <Button Content="Menu" Name="MenuBtn" Click="MenuBtn_Click" Style="{StaticResource ButtonStyleWhite}"/>
                         <Button Content="Random Fights" Name="GameBtn0" Click="GameBtn0_Click" Style="{StaticResource ButtonStyleWhite}"/>
+                        <Button Content="Another game" Name="GameBtn1" Click="GameBtn0_Click" Style="{StaticResource ButtonStyleWhite}"/>
+                        <Button Content="Servers" Name="ServersBtn" Grid.Row="1" Click="ServersBtn_Click" Style="{StaticResource ButtonStyleWhite}"/>
                         <Button Content="Settings" Name="SettingsBtn" Grid.Row="1" Click="SettingsBtn_Click" Style="{StaticResource ButtonStyleWhite}"/>
                     </StackPanel>
                 </Grid>

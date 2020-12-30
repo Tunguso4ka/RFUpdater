@@ -154,5 +154,10 @@ namespace RFUpdater
         {
             Frame0.Content = new StartPage(GameStatus, Language);
         }
+
+        private void ServersBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Frame0.Content = new ServersPage();
+        }
     }
 }
