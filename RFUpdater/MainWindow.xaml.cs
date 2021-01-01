@@ -159,5 +159,10 @@ namespace RFUpdater
         {
             Frame0.Content = new ServersPage();
         }
+
+        private void MinimBtn_Click(object sender, RoutedEventArgs e)
+        {
+            this.WindowState = WindowState.Minimized;
+        }
     }
 }

@@ -30,7 +30,8 @@
                     </StackPanel>
                 </Grid>
                 <Frame Grid.Column="1" Name="Frame0" NavigationUIVisibility="Hidden" Margin="5" />
-                <Button Content="&#10006;" x:Name="CloseBtn" Click="CloseBtn_Click" Style="{StaticResource CloseButtonStyleWhite}" Height="30" Grid.Column="1" Margin="250,0,0,490" Width="50"/>
+                <Button Content="―" x:Name="MinimBtn" Click="MinimBtn_Click" Style="{StaticResource CloseButtonStyleWhite}" Height="25" Grid.Column="1" Margin="230,0,35,490" Width="35" FontSize="16"/>
+                <Button Content="✕" x:Name="CloseBtn" Click="CloseBtn_Click" Style="{StaticResource CloseButtonStyleWhite}" Height="25" Grid.Column="1" Margin="265,0,0,490" Width="35" FontSize="16"/>
             </Grid>
         </Border>
     </Grid>
