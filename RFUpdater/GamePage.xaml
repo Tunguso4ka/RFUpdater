@@ -15,14 +15,10 @@
         </Grid.RowDefinitions>
         <TextBlock Text="GameName" Name="GameNameTextBlock" FontSize="36" Style="{StaticResource GPTextBlockWhite}"/>
         <Grid Background="#1D017A" Grid.Row="1">
-            <StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="Version: 0.0.0.0" Name="VersionTextBlock" Style="{StaticResource GPTextBlockWhite}"/>
-                    <TextBlock Text="   "/>
-                    <TextBlock Text="Status: Not installed" Name="StatusTextBlock" Style="{StaticResource GPTextBlockWhite}"/>
-                    <TextBlock Text="   "/>
-                    <TextBlock Text="Downloading speed: " Name="DownSpeedTextBlock" Style="{StaticResource GPTextBlockWhite}"/>
-                </StackPanel>
+            <StackPanel Margin="5">
+                <TextBlock Text="Version: 0.0.0.0" Name="VersionTextBlock" Style="{StaticResource GPTextBlockWhite}"/>
+                <TextBlock Text="Status: Not installed" Name="StatusTextBlock" Style="{StaticResource GPTextBlockWhite}"/>
+                <TextBlock Text="Downloading speed: " Name="DownSpeedTextBlock" Style="{StaticResource GPTextBlockWhite}"/>
                 <ProgressBar Value="0" Name="ProgressBar0"/>
                 <StackPanel Orientation="Horizontal">
                     <Button Content="Install" Name="InstallBtn" Style="{StaticResource ButtonStyleWhite}" Click="InstallBtn_Click" Width="100"/>

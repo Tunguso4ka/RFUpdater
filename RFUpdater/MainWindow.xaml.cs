@@ -21,7 +21,7 @@ namespace RFUpdater
         string RFUUpdateInfoUrl = @"https://filetransfer.io/data-package/RbweFxbK/download";
         string RFUUpdateInfoPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\RFUpdater\RFUV.txt";
         string RFUpdateInfoPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\RFUpdater\RFV.txt";
-        string Game0UpdateInfoUrl;
+        string Game0UpdateInfoUrl = @"";
         string Game0Name;
         string Game0Path;
         string Game0UpdateUrl;
@@ -102,18 +102,18 @@ namespace RFUpdater
 
             try
             {
-                /*WebClient WebClient = new WebClient();
-                WebClient.DownloadFile(RFUUpdateInfoUrl, RFUUpdateInfoPath);*/
-
+                /*
+                WebClient WebClient = new WebClient();
+                WebClient.DownloadFile(RFUUpdateInfoUrl, RFUUpdateInfoPath);
+                */
                 using (StreamReader StreamReader = new StreamReader(RFUUpdateInfoPath))
                 {
                     NewRFUVersion = new Version(StreamReader.ReadLine());
-                    Game0UpdateInfoUrl = StreamReader.ReadLine();
                     StreamReader.Dispose();
                 }
                 /*
                 File.Delete(RFUUpdateInfoPath);
-
+                
                 WebClient.DownloadFile(Game0UpdateInfoUrl, RFUUpdateInfoPath);
                 */
                 using (StreamReader StreamReader = new StreamReader(RFUpdateInfoPath))
@@ -123,7 +123,8 @@ namespace RFUpdater
                     StreamReader.Dispose();
                 }
                 /*
-                File.Delete(RFUUpdateInfoPath);*/
+                File.Delete(RFUUpdateInfoPath);
+                */
             }
             catch
             {

@@ -24,5 +24,13 @@ namespace RFUpdater
         {
             InitializeComponent();
         }
+
+        private void SaveBtn_Click(object sender, RoutedEventArgs e)
+        {
+            if(RB0.IsChecked == true)
+            {
+
+            }
+        }
     }
 }

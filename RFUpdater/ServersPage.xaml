@@ -17,15 +17,16 @@
             <StackPanel Margin="5">
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="Server #1" Style="{StaticResource GPTextBlockWhite}"/>
-                    <RadioButton/>
+                    <RadioButton Name="RB0"/>
                     <TextBlock Text="Server info/ping" Style="{StaticResource GPTextBlockWhite}"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="Server #2" Style="{StaticResource GPTextBlockWhite}"/>
-                    <RadioButton/>
+                    <RadioButton Name="RB1"/>
                     <TextBlock Text="Server info/ping" Style="{StaticResource GPTextBlockWhite}"/>
                 </StackPanel>
             </StackPanel>
         </Grid>
+        <Button Content="Save and restart app" x:Name="SaveBtn" Click="SaveBtn_Click" Style="{StaticResource ButtonStyleWhite}" Margin="0,5,392,5"/>
     </Grid>
 </Page>
