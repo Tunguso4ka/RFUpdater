@@ -20,11 +20,11 @@ namespace RFUpdater
         string Language;
         string RFUUpdateInfoUrl = @"https://filetransfer.io/data-package/RbweFxbK/download";
         string RFUUpdateInfoPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\RFUpdater\RFUV.txt";
-        string RFUpdateInfoPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\RFUpdater\RFV.txt";
+        string Game0pdateInfoPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\RFUpdater\RFV.txt";
         string Game0UpdateInfoUrl = @"";
         string Game0Name;
         string Game0Path;
-        string Game0UpdateUrl;
+        string Game0UpdateUrl = @"https://drive.google.com/uc?export=download&confirm=no_antivirus&id=1kMrTP1cCcUwDVvQCOYi-7Qs-f9htvpm9";
         string SaveFolderPath;
         Version Game0Version;
         int GameStatus;
@@ -86,26 +86,21 @@ namespace RFUpdater
         }
         void UpdatesChecking()
         {
-            using (StreamReader StreamReader = new StreamReader(RFUUpdateInfoPath))
-            {
-                NewRFUVersion = new Version(StreamReader.ReadLine());
-                Game0UpdateInfoUrl = StreamReader.ReadLine();
-                StreamReader.Dispose();
-            }
-
-            using (StreamReader StreamReader = new StreamReader(RFUpdateInfoPath))
-            {
-                Game0Version = new Version(StreamReader.ReadLine());
-                Game0UpdateUrl = StreamReader.ReadLine();
-                StreamReader.Dispose();
-            }
+            RFUUpdateInfoUrl = @"https://drive.google.com/uc?export=download&confirm=no_antivirus&id=1kMrTP1cCcUwDVvQCOYi-7Qs-f9htvpm9";
+            Game0UpdateInfoUrl = @"https://drive.google.com/uc?export=download&confirm=no_antivirus&id=1TVO97aom4DKvBV35dTE_FOTV_dEmg7Yc";
 
             try
             {
-                /*
+                if(File.Exists(RFUUpdateInfoPath))
+                {
+                    File.Delete(RFUUpdateInfoPath);
+                }
+                if (File.Exists(Game0pdateInfoPath))
+                {
+                    File.Delete(Game0pdateInfoPath);
+                }
                 WebClient WebClient = new WebClient();
                 WebClient.DownloadFile(RFUUpdateInfoUrl, RFUUpdateInfoPath);
-                */
                 using (StreamReader StreamReader = new StreamReader(RFUUpdateInfoPath))
                 {
                     NewRFUVersion = new Version(StreamReader.ReadLine());
@@ -113,22 +108,34 @@ namespace RFUpdater
                 }
                 /*
                 File.Delete(RFUUpdateInfoPath);
-                
-                WebClient.DownloadFile(Game0UpdateInfoUrl, RFUUpdateInfoPath);
                 */
-                using (StreamReader StreamReader = new StreamReader(RFUpdateInfoPath))
+                WebClient.DownloadFile(Game0UpdateInfoUrl, Game0pdateInfoPath);
+                
+                using (StreamReader StreamReader = new StreamReader(Game0pdateInfoPath))
+                {
+                    Game0Version = new Version(StreamReader.ReadLine());
+                    //Game0UpdateUrl = StreamReader.ReadLine();
+                    StreamReader.Dispose();
+                }
+                /*
+                File.Delete(Game0pdateInfoPath);
+                */
+            }
+            catch
+            {
+                using (StreamReader StreamReader = new StreamReader(RFUUpdateInfoPath))
+                {
+                    NewRFUVersion = new Version(StreamReader.ReadLine());
+                    Game0UpdateInfoUrl = StreamReader.ReadLine();
+                    StreamReader.Dispose();
+                }
+
+                using (StreamReader StreamReader = new StreamReader(Game0pdateInfoPath))
                 {
                     Game0Version = new Version(StreamReader.ReadLine());
                     Game0UpdateUrl = StreamReader.ReadLine();
                     StreamReader.Dispose();
                 }
-                /*
-                File.Delete(RFUUpdateInfoPath);
-                */
-            }
-            catch
-            {
-
             }
         }
 
@@ -164,6 +171,11 @@ namespace RFUpdater
         private void MinimBtn_Click(object sender, RoutedEventArgs e)
         {
             this.WindowState = WindowState.Minimized;
+        }
+
+        private void DownloadingBtn_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

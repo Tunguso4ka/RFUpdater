@@ -16,7 +16,7 @@
         <StackPanel Orientation="Horizontal">
             <Button Content="Save and restart app" Name="SaveBtn" Click="SaveBtn_Click" Style="{StaticResource ButtonStyleWhite}"/>
         </StackPanel>
-        <Grid Background="#1D017A" Grid.Row="1">
+        <Border CornerRadius="10" Background="#70BAFF" Grid.Row="1">
             <StackPanel Margin="5">
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="Language:" Style="{StaticResource GPTextBlockWhite}"/>
@@ -34,6 +34,6 @@
                     <RadioButton Content="D:\Games\" Name="LRB3" Foreground="White"/>
                 </StackPanel>
             </StackPanel>
-        </Grid>
+        </Border>
     </Grid>
 </Page>

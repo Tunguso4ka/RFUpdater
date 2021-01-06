@@ -14,7 +14,7 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <TextBlock Text="GameName" Name="GameNameTextBlock" FontSize="36" Style="{StaticResource GPTextBlockWhite}"/>
-        <Grid Background="#1D017A" Grid.Row="1">
+        <Border CornerRadius="10" Background="#70BAFF" Grid.Row="1">
             <StackPanel Margin="5">
                 <TextBlock Text="Version: 0.0.0.0" Name="VersionTextBlock" Style="{StaticResource GPTextBlockWhite}"/>
                 <TextBlock Text="Status: Not installed" Name="StatusTextBlock" Style="{StaticResource GPTextBlockWhite}"/>
@@ -25,6 +25,6 @@
                     <Button Content="Delete" Name="DeleteBtn" Style="{StaticResource ButtonStyleWhite}" Click="DeleteBtn_Click" Width="100"/>
                 </StackPanel>
             </StackPanel>
-        </Grid>
+        </Border>
     </Grid>
 </Page>

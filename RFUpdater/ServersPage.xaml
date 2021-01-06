@@ -13,7 +13,7 @@
             <RowDefinition Height="50"/>
             <RowDefinition />
         </Grid.RowDefinitions>
-        <Grid Grid.Row="1"  Background="#1D017A">
+        <Border CornerRadius="10" Background="#70BAFF" Grid.Row="1">
             <StackPanel Margin="5">
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="Server #1" Style="{StaticResource GPTextBlockWhite}"/>
@@ -26,7 +26,7 @@
                     <TextBlock Text="Server info/ping" Style="{StaticResource GPTextBlockWhite}"/>
                 </StackPanel>
             </StackPanel>
-        </Grid>
+        </Border>
         <Button Content="Save and restart app" x:Name="SaveBtn" Click="SaveBtn_Click" Style="{StaticResource ButtonStyleWhite}" Margin="0,5,392,5"/>
     </Grid>
 </Page>

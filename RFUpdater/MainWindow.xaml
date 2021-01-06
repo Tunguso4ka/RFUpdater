@@ -11,27 +11,28 @@
         Background="Transparent"
         WindowStartupLocation="CenterScreen"
         MouseLeftButtonDown="Window_MouseLeftButtonDown"
-        Title="MainWindow" Height="520" Width="400">
+        Title="MainWindow" Height="560" Width="400">
 
     <Grid>
-        <Border CornerRadius="10" Background="#080A5E">
+        <Border CornerRadius="10" Background="#5DB3FE">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="100"/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
                 <Grid>
-                    <StackPanel Margin="5,55,0,5">
+                    <StackPanel Margin="0,50,0,0">
                         <Button Content="Menu" Name="MenuBtn" Click="MenuBtn_Click" Style="{StaticResource ButtonStyleWhite}"/>
                         <Button Content="Random Fights" Name="GameBtn0" Click="GameBtn0_Click" Style="{StaticResource ButtonStyleWhite}"/>
                         <Button Content="Another game" Name="GameBtn1" Click="GameBtn0_Click" Style="{StaticResource ButtonStyleWhite}"/>
+                        <Button Content="Downloads" Name="DownloadingBtn" Click="DownloadingBtn_Click" Style="{StaticResource ButtonStyleWhite}"/>
                         <Button Content="Servers" Name="ServersBtn" Grid.Row="1" Click="ServersBtn_Click" Style="{StaticResource ButtonStyleWhite}"/>
                         <Button Content="Settings" Name="SettingsBtn" Grid.Row="1" Click="SettingsBtn_Click" Style="{StaticResource ButtonStyleWhite}"/>
                     </StackPanel>
                 </Grid>
-                <Frame Grid.Column="1" Name="Frame0" NavigationUIVisibility="Hidden" Margin="5" />
-                <Button Content="⚊" x:Name="MinimBtn" Click="MinimBtn_Click" Style="{StaticResource CloseButtonStyleWhite}" Height="25" Grid.Column="1" Margin="230,0,35,495" Width="35" FontSize="16"/>
-                <Button Content="⛌" x:Name="CloseBtn" Click="CloseBtn_Click" Style="{StaticResource CloseButtonStyleWhite}" Height="25" Grid.Column="1" Margin="265,0,0,495" Width="35" FontSize="16"/>
+                <Frame Grid.Column="1" Name="Frame0" NavigationUIVisibility="Hidden"/>
+                <Button Content="⚊" x:Name="MinimBtn" Click="MinimBtn_Click" Style="{StaticResource CloseButtonStyleWhite}" Height="25" Grid.Column="1" Margin="238,0,32,535" FontSize="16"/>
+                <Button Content="⛌" x:Name="CloseBtn" Click="CloseBtn_Click" Style="{StaticResource CloseButtonStyleWhite}" Height="Auto" Grid.Column="1" Margin="268,0,0,535" FontSize="16"/>
             </Grid>
         </Border>
     </Grid>

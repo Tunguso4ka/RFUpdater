@@ -13,8 +13,8 @@
             <RowDefinition Height="50"/>
             <RowDefinition />
         </Grid.RowDefinitions>
-        <Grid Grid.Row="1"  Background="#1D017A">
-            <StackPanel>
+        <Border CornerRadius="10" Background="#70BAFF" Grid.Row="1">
+            <StackPanel Margin="5">
                 <TextBlock Text="Good day!" Style="{StaticResource GPTextBlockWhite}" Name="GDTextBlock"/>
                 <TextBlock Text="Game status" Style="{StaticResource GPTextBlockWhite}" Name="GameStatusTextBlock" Grid.Row="1" FontFamily="Yu Gothic UI Light" TextWrapping="Wrap"/>
                 <Grid Grid.Row="3">
@@ -28,6 +28,6 @@
                     </StackPanel>
                 </Grid>
             </StackPanel>
-        </Grid>
+        </Border>
     </Grid>
 </Page>

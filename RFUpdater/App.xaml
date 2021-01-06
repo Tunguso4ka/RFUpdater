@@ -5,10 +5,11 @@
              StartupUri="MainWindow.xaml">
     <Application.Resources>
         <Style TargetType="Button" x:Key="ButtonStyleWhite">
-            <Setter Property="Background" Value="#22007C"/>
-            <Setter Property="BorderBrush" Value="#22007C"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
             <Setter Property="Height" Value="40"/>
             <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Cursor" Value="Hand"/>
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type Button}">
@@ -20,7 +21,7 @@
             </Setter>
             <Style.Triggers>
                 <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Background" Value="#170568"/>
+                    <Setter Property="Background" Value="#70BAFF"/>
                 </Trigger>
             </Style.Triggers>
         </Style>
@@ -42,7 +43,6 @@
                 <Trigger Property="IsMouseOver" Value="True">
                     <Setter Property="Background" Value="Red"></Setter>
                 </Trigger>
-
             </Style.Triggers>
         </Style>
         
