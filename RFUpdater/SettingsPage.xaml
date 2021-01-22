@@ -9,31 +9,29 @@
       Title="SettingsPage">
 
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="50"/>
-            <RowDefinition/>
-        </Grid.RowDefinitions>
-        <StackPanel Orientation="Horizontal">
+        <Grid Background="#1B3B6F" Margin="0,25,0,0">
+            <ScrollViewer>
+                <StackPanel Margin="5,25,5,5">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Language:" Style="{StaticResource GPTextBlockWhite}"/>
+                        <RadioButton Content="English" Name="LRB0" Foreground="White"/>
+                        <RadioButton Content="Русский" Name="LRB1" Foreground="White"/>
+                    </StackPanel>
+                    <Border Style="{StaticResource BorderWhite}"/>
+                    <StackPanel Orientation="Horizontal">
+                        <CheckBox Content="Autoupdate" Name="CB0" Foreground="White"/>
+                    </StackPanel>
+                    <Border Style="{StaticResource BorderWhite}"/>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Select folder:" Style="{StaticResource GPTextBlockWhite}"/>
+                        <RadioButton Content="C:\Games\" Name="LRB2" Foreground="White"/>
+                        <RadioButton Content="D:\Games\" Name="LRB3" Foreground="White"/>
+                    </StackPanel>
+                </StackPanel>
+            </ScrollViewer>
+        </Grid>
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
             <Button Content="Save and restart app" Name="SaveBtn" Click="SaveBtn_Click" Style="{StaticResource ButtonStyleWhite}"/>
         </StackPanel>
-        <Border CornerRadius="10" Background="#70BAFF" Grid.Row="1">
-            <StackPanel Margin="5">
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="Language:" Style="{StaticResource GPTextBlockWhite}"/>
-                    <RadioButton Content="English" Name="LRB0" Foreground="White"/>
-                    <RadioButton Content="Русский" Name="LRB1" Foreground="White"/>
-                </StackPanel>
-                <Border Style="{StaticResource BorderWhite}"/>
-                <StackPanel Orientation="Horizontal">
-                    <CheckBox Content="Autoupdate" Name="CB0" Foreground="White"/>
-                </StackPanel>
-                <Border Style="{StaticResource BorderWhite}"/>
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="Select folder:" Style="{StaticResource GPTextBlockWhite}"/>
-                    <RadioButton Content="C:\Games\" Name="LRB2" Foreground="White"/>
-                    <RadioButton Content="D:\Games\" Name="LRB3" Foreground="White"/>
-                </StackPanel>
-            </StackPanel>
-        </Border>
     </Grid>
 </Page>

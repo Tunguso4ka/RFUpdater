@@ -45,19 +45,19 @@ namespace RFUpdater
             if (GameStatus == 0)
             {
                 StatusTextBlock.Text = "Status: Not installed.";
-                InstallBtn.Content = "Install";
+                InstallBtn.Content = "⬇💾Install";
                 DeleteBtn.Visibility = Visibility.Hidden;
             }
             else if (GameStatus == 1)
             {
                 StatusTextBlock.Text = "Status: Installed.";
-                InstallBtn.Content = "Play";
+                InstallBtn.Content = "🎮Play";
                 DeleteBtn.Visibility = Visibility.Visible;
             }
             else if (GameStatus == 2)
             {
                 StatusTextBlock.Text = "Status: Update found.";
-                InstallBtn.Content = "Update";
+                InstallBtn.Content = "🆕Update";
                 DeleteBtn.Visibility = Visibility.Visible;
             }
         }
@@ -100,7 +100,7 @@ namespace RFUpdater
                 Directory.CreateDirectory(FolderPath);
             }
             ZipPath = FolderPath + @"\RandomFights.zip";
-            GamePath = FolderPath + @"\0.7.0.2\RandomFights.exe";
+            GamePath = FolderPath + @"\" + GameVersion + @"\RandomFights.exe";
 
             Uri UpdateUri = new Uri(GameUpdateUri);
 
@@ -129,7 +129,7 @@ namespace RFUpdater
             {
                 GameStatus = 1;
                 StatusTextBlock.Text = "Status: File downloaded.";
-                InstallBtn.Content = "Play";
+                InstallBtn.Content = "🎮Play";
                 InstallBtn.Visibility = Visibility.Visible;
                 DeleteBtn.Visibility = Visibility.Visible;
                 ProgressBar0.Visibility = Visibility.Hidden;
@@ -167,7 +167,7 @@ namespace RFUpdater
         {
             GameStatus = 0;
             StatusTextBlock.Text = "Status: Not installed.";
-            InstallBtn.Content = "Install";
+            InstallBtn.Content = "⬇💾Install";
             DeleteBtn.Visibility = Visibility.Hidden;
 
             BinaryWriter BinaryWriter = new BinaryWriter(File.Open(SettingsPath, FileMode.Create));

@@ -9,25 +9,14 @@
       Title="StartPage">
 
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="50"/>
-            <RowDefinition />
-        </Grid.RowDefinitions>
-        <Border CornerRadius="10" Background="#70BAFF" Grid.Row="1">
-            <StackPanel Margin="5">
-                <TextBlock Text="Good day!" Style="{StaticResource GPTextBlockWhite}" Name="GDTextBlock"/>
-                <TextBlock Text="Game status" Style="{StaticResource GPTextBlockWhite}" Name="GameStatusTextBlock" Grid.Row="1" FontFamily="Yu Gothic UI Light" TextWrapping="Wrap"/>
-                <Grid Grid.Row="3">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="20"/>
-                        <RowDefinition/>
-                    </Grid.RowDefinitions>
-                    <TextBlock Text="Your photos:" Style="{StaticResource GPTextBlockWhite}" Name="YPTextBlock" Grid.Row="0"/>
-                    <StackPanel Orientation="Horizontal" Grid.Row="1">
-
-                    </StackPanel>
-                </Grid>
-            </StackPanel>
-        </Border>
+        <Grid Background="#1B3B6F" Margin="0,25,0,0">
+            <ScrollViewer>
+                <StackPanel Margin="5,25,5,5">
+                    <TextBlock Text="Good day!" Style="{StaticResource GPTextBlockWhite}" Name="GDTextBlock"/>
+                    <TextBlock Text="Game status" Style="{StaticResource GPTextBlockWhite}" Name="GameStatusTextBlock" Grid.Row="1" FontFamily="Yu Gothic UI Light" TextWrapping="Wrap"/>
+                    
+                </StackPanel>
+            </ScrollViewer>
+        </Grid>
     </Grid>
 </Page>

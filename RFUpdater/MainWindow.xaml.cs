@@ -18,10 +18,10 @@ namespace RFUpdater
         string FolderPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\RFUpdater\";
         string SettingsPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\RFUpdater\settings.dat";
         string Language;
-        string RFUUpdateInfoUrl = @"https://filetransfer.io/data-package/RbweFxbK/download";
+        string RFUUpdateInfoUrl = @"https://drive.google.com/uc?export=download&id=1oKyTppE7V8E-Q0UF0_SXNmW3diQ0QbLJ";
         string RFUUpdateInfoPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\RFUpdater\RFUV.txt";
         string Game0pdateInfoPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\RFUpdater\RFV.txt";
-        string Game0UpdateInfoUrl = @"";
+        string Game0UpdateInfoUrl = @"https://drive.google.com/uc?export=download&id=1-vMmTTLHl7z3O-cAMD_ubUeW1WJyL5ID";
         string Game0Name;
         string Game0Path;
         string Game0UpdateUrl = @"https://drive.google.com/uc?export=download&confirm=no_antivirus&id=1kMrTP1cCcUwDVvQCOYi-7Qs-f9htvpm9";
@@ -86,9 +86,6 @@ namespace RFUpdater
         }
         void UpdatesChecking()
         {
-            RFUUpdateInfoUrl = @"https://drive.google.com/uc?export=download&confirm=no_antivirus&id=1kMrTP1cCcUwDVvQCOYi-7Qs-f9htvpm9";
-            Game0UpdateInfoUrl = @"https://drive.google.com/uc?export=download&confirm=no_antivirus&id=1TVO97aom4DKvBV35dTE_FOTV_dEmg7Yc";
-
             try
             {
                 if(File.Exists(RFUUpdateInfoPath))
@@ -106,20 +103,17 @@ namespace RFUpdater
                     NewRFUVersion = new Version(StreamReader.ReadLine());
                     StreamReader.Dispose();
                 }
-                /*
                 File.Delete(RFUUpdateInfoPath);
-                */
                 WebClient.DownloadFile(Game0UpdateInfoUrl, Game0pdateInfoPath);
                 
                 using (StreamReader StreamReader = new StreamReader(Game0pdateInfoPath))
                 {
                     Game0Version = new Version(StreamReader.ReadLine());
-                    //Game0UpdateUrl = StreamReader.ReadLine();
+                    Game0UpdateUrl = StreamReader.ReadLine();
                     StreamReader.Dispose();
                 }
-                /*
                 File.Delete(Game0pdateInfoPath);
-                */
+                
             }
             catch
             {
