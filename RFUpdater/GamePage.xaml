@@ -8,21 +8,23 @@
       d:DesignHeight="520" d:DesignWidth="500"
       Title="GamePage">
 
-    <Grid>
-        <Grid Background="#1B3B6F" Margin="0,25,0,0">
-            <ScrollViewer>
-                <StackPanel Margin="5,25,5,5">
+    <Grid Background="#065275">
+        <ScrollViewer>
+            <StackPanel Margin="5,5,5,5">
+                <TextBlock Text="GameName" Name="GameNameTextBlock" FontSize="36" Style="{StaticResource GPTextBlockWhite}" HorizontalAlignment="Center"/>
+                <StackPanel Orientation="Horizontal">
                     <TextBlock Text="Version: 0.0.0.0" Name="VersionTextBlock" Style="{StaticResource GPTextBlockWhite}"/>
+                    <Separator Margin="5,0"/>
                     <TextBlock Text="Status: Not installed" Name="StatusTextBlock" Style="{StaticResource GPTextBlockWhite}"/>
+                    <Separator Margin="5,0"/>
                     <TextBlock Text="Downloading speed: " Name="DownSpeedTextBlock" Style="{StaticResource GPTextBlockWhite}"/>
-                    <ProgressBar Value="0" Name="ProgressBar0"/>
-                    <StackPanel Orientation="Horizontal">
-                        <Button Content="Install" Name="InstallBtn" Style="{StaticResource ButtonStyleWhite}" Click="InstallBtn_Click" Width="100"/>
-                        <Button Content="🗑" Name="DeleteBtn" Style="{StaticResource ButtonStyleWhite}" Click="DeleteBtn_Click" Width="40"/>
-                    </StackPanel>
                 </StackPanel>
-            </ScrollViewer>
-        </Grid>
-        <TextBlock Text="GameName" Name="GameNameTextBlock" FontSize="36" Style="{StaticResource GPTextBlockWhite}" VerticalAlignment="Top"/>
+                <ProgressBar Value="0" Name="ProgressBar0"/>
+                <StackPanel Orientation="Horizontal">
+                    <Button Content="Install" Name="InstallBtn" Style="{StaticResource ButtonStyleWhite}" Click="InstallBtn_Click" Width="100"/>
+                    <Button Content="🗑" Name="DeleteBtn" Style="{StaticResource ButtonStyleWhite}" Click="DeleteBtn_Click" Width="40"/>
+                </StackPanel>
+            </StackPanel>
+        </ScrollViewer>
     </Grid>
 </Page>

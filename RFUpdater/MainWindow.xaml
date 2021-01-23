@@ -15,25 +15,27 @@
 
     <Grid>
         <Grid Background="#065A82">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="100"/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
-            <Grid>
-                <StackPanel Margin="0,25,0,0">
-                    <Button Content="Menu" Name="MenuBtn" Click="MenuBtn_Click" Style="{StaticResource ButtonStyleWhite}"/>
-                    <Button Content="Random Fights" Name="GameBtn0" Click="GameBtn0_Click" Style="{StaticResource ButtonStyleWhite}"/>
-                    <Button Content="Another game" Name="GameBtn1" Click="GameBtn0_Click" Style="{StaticResource ButtonStyleWhite}"/>
-                    <Button Content="Downloads" Name="DownloadingBtn" Click="DownloadingBtn_Click" Style="{StaticResource ButtonStyleWhite}"/>
-                    <Button Content="Servers" Name="ServersBtn" Grid.Row="1" Click="ServersBtn_Click" Style="{StaticResource ButtonStyleWhite}"/>
-                    <Button Content="Settings" Name="SettingsBtn" Grid.Row="1" Click="SettingsBtn_Click" Style="{StaticResource ButtonStyleWhite}"/>
-                </StackPanel>
-            </Grid>
-            <Frame Grid.Column="1" Name="Frame0" NavigationUIVisibility="Hidden"/>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="25"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Frame Grid.Row="1" Name="Frame0" NavigationUIVisibility="Hidden"/>
         </Grid>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top">
-            <Button Content="⎼" x:Name="MinimBtn" Click="MinimBtn_Click" Style="{StaticResource CloseButtonStyleWhite}" Width="35" Height="25" Grid.Column="1" FontSize="16"/>
-            <Button Content="✕" x:Name="CloseBtn" Click="CloseBtn_Click" Style="{StaticResource CloseButtonStyleWhite}" Width="35" Height="25" Grid.Column="1" FontSize="16"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Top">
+                <Button Content="Menu" Name="MenuBtn" Click="MenuBtn_Click" Style="{StaticResource ButtonStyleWhite}"/>
+                <Separator Margin="3,0"/>
+                <Button Content="Random Fights" Name="GameBtn0" Click="GameBtn0_Click" Style="{StaticResource ButtonStyleWhite}"/>
+                <Separator Margin="3,0"/>
+                <Button Content="Downloads" Name="DownloadingBtn" Click="DownloadingBtn_Click" Style="{StaticResource ButtonStyleWhite}"/>
+                <Separator Margin="3,0"/>
+                <Button Content="Settings" Name="SettingsBtn" Grid.Row="1" Click="SettingsBtn_Click" Style="{StaticResource ButtonStyleWhite}"/>
+                <Separator Margin="10,0"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top">
+                <Button Content="⎼" x:Name="MinimBtn" Click="MinimBtn_Click" Style="{StaticResource CloseButtonStyleWhite}" Width="35" Height="25" Grid.Column="1" FontSize="16"/>
+                <Button Content="✕" x:Name="CloseBtn" Click="CloseBtn_Click" Style="{StaticResource CloseButtonStyleWhite}" Width="35" Height="25" Grid.Column="1" FontSize="16"/>
+            </StackPanel>
         </StackPanel>
     </Grid>
 </Window>

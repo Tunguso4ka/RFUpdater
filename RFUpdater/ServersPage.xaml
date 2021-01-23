@@ -8,23 +8,21 @@
       d:DesignHeight="520" d:DesignWidth="500"
       Title="ServersPage">
 
-    <Grid>
-        <Grid Background="#1B3B6F" Margin="0,25,0,0">
-            <ScrollViewer>
-                <StackPanel Margin="5,25,5,5">
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="Server #1" Style="{StaticResource GPTextBlockWhite}"/>
-                        <RadioButton Name="RB0"/>
-                        <TextBlock Text="Server info/ping" Style="{StaticResource GPTextBlockWhite}"/>
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="Server #2" Style="{StaticResource GPTextBlockWhite}"/>
-                        <RadioButton Name="RB1"/>
-                        <TextBlock Text="Server info/ping" Style="{StaticResource GPTextBlockWhite}"/>
-                    </StackPanel>
+    <Grid Background="#065275">
+        <ScrollViewer>
+            <StackPanel Margin="5,5,5,5">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Server #1" Style="{StaticResource GPTextBlockWhite}"/>
+                    <RadioButton Name="RB0"/>
+                    <TextBlock Text="Server info/ping" Style="{StaticResource GPTextBlockWhite}"/>
                 </StackPanel>
-            </ScrollViewer>
-        </Grid>
-        <Button Content="Save and restart app" x:Name="SaveBtn" Click="SaveBtn_Click" Style="{StaticResource ButtonStyleWhite}" Margin="0,5,392,5"/>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Server #2" Style="{StaticResource GPTextBlockWhite}"/>
+                    <RadioButton Name="RB1"/>
+                    <TextBlock Text="Server info/ping" Style="{StaticResource GPTextBlockWhite}"/>
+                </StackPanel>
+            </StackPanel>
+        </ScrollViewer>
+        <Button Content="Save and restart app" x:Name="SaveBtn" Click="SaveBtn_Click" Style="{StaticResource ButtonStyleWhite}" VerticalAlignment="Bottom"/>
     </Grid>
 </Page>

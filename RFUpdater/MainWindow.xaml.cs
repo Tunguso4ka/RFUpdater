@@ -31,6 +31,11 @@ namespace RFUpdater
         Version NewRFUVersion;
         Version OldRFUVersion;
         bool AutoUpdate;
+
+        public GamePage RandomFightsPage;
+        public SettingsPage ASettingsPage;
+        public StartPage AStartPage;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -46,7 +51,15 @@ namespace RFUpdater
             Language = culture.ToString();
             SettingsSearch();
             UpdatesChecking();
-            Frame0.Content = new StartPage(GameStatus, Language);
+
+            string gameName = Game0Name, GamePath = Game0Path, GameUpdateUrl = Game0UpdateUrl;
+            Version gameVersion = Game0Version;
+
+            AStartPage = new StartPage(GameStatus, Language);
+            RandomFightsPage = new GamePage(gameName, gameVersion, GamePath, GameUpdateUrl, GameStatus, Language, AutoUpdate, SaveFolderPath);
+            ASettingsPage = new SettingsPage(gameName, gameVersion, GamePath, GameUpdateUrl, GameStatus, Language, AutoUpdate, SaveFolderPath);
+
+            Frame0.Content = AStartPage;
         }
 
         private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -135,16 +148,12 @@ namespace RFUpdater
 
         private void SettingsBtn_Click(object sender, RoutedEventArgs e)
         {
-            string gameName = Game0Name, GamePath = Game0Path, GameUpdateUrl = Game0UpdateUrl;
-            Version gameVersion = Game0Version;
-            Frame0.Content = new SettingsPage(gameName, gameVersion, GamePath, GameUpdateUrl, GameStatus, Language, AutoUpdate, SaveFolderPath);
+            Frame0.Content = ASettingsPage;
         }
 
         private void GameBtn0_Click(object sender, RoutedEventArgs e)
         {
-            string gameName = Game0Name, GamePath = Game0Path, GameUpdateUrl = Game0UpdateUrl;
-            Version gameVersion = Game0Version;
-            Frame0.Content = new GamePage(gameName, gameVersion, GamePath, GameUpdateUrl, GameStatus, Language, AutoUpdate, SaveFolderPath);
+            Frame0.Content = RandomFightsPage;
         }
 
         private void CloseBtn_Click(object sender, RoutedEventArgs e)
@@ -154,12 +163,12 @@ namespace RFUpdater
 
         private void MenuBtn_Click(object sender, RoutedEventArgs e)
         {
-            Frame0.Content = new StartPage(GameStatus, Language);
+            Frame0.Content = AStartPage;
         }
 
         private void ServersBtn_Click(object sender, RoutedEventArgs e)
         {
-            Frame0.Content = new ServersPage();
+            
         }
 
         private void MinimBtn_Click(object sender, RoutedEventArgs e)
