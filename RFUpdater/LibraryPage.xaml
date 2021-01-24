@@ -9,6 +9,13 @@
       Title="LibraryPage">
 
     <Grid>
-        
+        <WrapPanel>
+            <Button Style="{StaticResource ButtonStyleWhiteWithBackground}" Height="Auto" Margin="5" Click="RandomFightsBtn_Click">
+                <StackPanel>
+                    <Image Height="70" Margin="5,5,5,0"/>
+                    <TextBlock Text="Game Name" Foreground="White" Margin="5,0,5,5" Name="GameNameTextBox"/>
+                </StackPanel>
+            </Button>
+        </WrapPanel>
     </Grid>
 </Page>

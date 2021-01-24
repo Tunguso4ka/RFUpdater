@@ -3,10 +3,9 @@ using System;
 using System.IO;
 using System.Net;
 using System.Reflection;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
-using System.Windows.Media;
+using Google.Apis.Drive; 
 
 namespace RFUpdater
 {
@@ -32,9 +31,10 @@ namespace RFUpdater
         Version OldRFUVersion;
         bool AutoUpdate;
 
-        public GamePage RandomFightsPage;
         public SettingsPage ASettingsPage;
         public StartPage AStartPage;
+        public LibraryPage ALibraryPage;
+        public GamePage RandomFightsPage;
 
         public MainWindow()
         {
@@ -56,8 +56,9 @@ namespace RFUpdater
             Version gameVersion = Game0Version;
 
             AStartPage = new StartPage(GameStatus, Language);
-            RandomFightsPage = new GamePage(gameName, gameVersion, GamePath, GameUpdateUrl, GameStatus, Language, AutoUpdate, SaveFolderPath);
             ASettingsPage = new SettingsPage(gameName, gameVersion, GamePath, GameUpdateUrl, GameStatus, Language, AutoUpdate, SaveFolderPath);
+            ALibraryPage = new LibraryPage(gameName);
+            RandomFightsPage = new GamePage(gameName, gameVersion, GamePath, GameUpdateUrl, GameStatus, Language, AutoUpdate, SaveFolderPath);
 
             Frame0.Content = AStartPage;
         }
@@ -153,7 +154,7 @@ namespace RFUpdater
 
         private void GameBtn0_Click(object sender, RoutedEventArgs e)
         {
-            Frame0.Content = RandomFightsPage;
+            Frame0.Content = ALibraryPage;
         }
 
         private void CloseBtn_Click(object sender, RoutedEventArgs e)

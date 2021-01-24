@@ -20,9 +20,19 @@ namespace RFUpdater
     /// </summary>
     public partial class LibraryPage : Page
     {
-        public LibraryPage()
+        string GameName;
+
+        public GamePage RandomFightsPage;
+        public LibraryPage(string gameName)
         {
             InitializeComponent();
+            GameName = gameName;
+            GameNameTextBox.Text = GameName;
+        }
+
+        private void RandomFightsBtn_Click(object sender, RoutedEventArgs e)
+        {
+            ((MainWindow)Window.GetWindow(this)).Frame0.Content = ((MainWindow)Window.GetWindow(this)).RandomFightsPage;
         }
     }
 }

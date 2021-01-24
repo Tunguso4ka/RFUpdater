@@ -35,7 +35,7 @@ namespace RFUpdater
             GameVersion = gameVersion;
             VersionTextBlock.Text = "Version: " + GameVersion;
             GamePath = gamePath;
-            GameUpdateUri = @"https://filetransfer.io/data-package/yA6mv0Oh/download";
+            GameUpdateUri = gameUpdateUrl;
             GameStatus = gameStatus;
             Language = language;
             AutoUpdate = autoUpdate;
@@ -128,7 +128,7 @@ namespace RFUpdater
             else 
             {
                 GameStatus = 1;
-                StatusTextBlock.Text = "Status: File downloaded.";
+                StatusTextBlock.Text = "Status: Installed.";
                 InstallBtn.Content = "🎮Play";
                 InstallBtn.Visibility = Visibility.Visible;
                 DeleteBtn.Visibility = Visibility.Visible;
@@ -155,7 +155,7 @@ namespace RFUpdater
         {
             if(File.Exists(GamePath))
             {
-                File.Delete(GamePath);
+                File.Delete(GameFolderPath);
                 DeleteGame();
             }
             else
