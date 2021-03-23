@@ -11,7 +11,7 @@
     <Grid>
         <ScrollViewer VerticalScrollBarVisibility="Hidden">
             <StackPanel Margin="5,5,5,5">
-                <TextBlock Text="GameName" Name="GameNameTextBlock" FontSize="36" Style="{StaticResource GPTextBlockWhite}" HorizontalAlignment="Center" FontFamily="{DynamicResource IBMPlexLight}" VerticalAlignment="Center" Background="{DynamicResource {x:Static SystemColors.MenuHighlightBrushKey}}"/>
+                <TextBlock Text="GameName" Name="GameNameTextBlock" FontSize="36" Style="{StaticResource GPTextBlockWhite}" HorizontalAlignment="Center" FontFamily="/RFUpdater;component/Materials/#IBM Plex Sans Light" VerticalAlignment="Center" Background="{DynamicResource {x:Static SystemColors.MenuHighlightBrushKey}}"/>
                 <StackPanel>
                     <StackPanel Orientation="Horizontal">
                         <Button Content="Install" Name="InstallBtn" Style="{StaticResource ButtonStyleWhite}" Click="InstallBtn_Click" Width="50" ToolTip="Install" Height="30" FontSize="16"/>

@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
 using System.Net;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Media;
 
@@ -15,6 +18,10 @@ namespace RFUpdater
     /// </summary>
     public partial class MainWindow : Window
     {
+        Thread settingsThread = new Thread(() => { });
+
+        NotifyIcon notifyIcon;
+
         string SettingsPath;
         string DownGamesPath;
         string RFUUpdateInfoUrl = @"https://drive.google.com/uc?export=download&id=1oKyTppE7V8E-Q0UF0_SXNmW3diQ0QbLJ";
@@ -39,6 +46,8 @@ namespace RFUpdater
         public MainWindow()
         {
             InitializeComponent();
+
+            CreateNotifyIcon();
 
             Properties.Settings.Default.AppDataPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\RFUpdater\";
             Properties.Settings.Default.Save();
@@ -184,11 +193,13 @@ namespace RFUpdater
         {
             if (Properties.Settings.Default.Installing == false)
             {
-                this.Close();
+                this.WindowState = WindowState.Minimized;
+                this.ShowInTaskbar = false;
             }
             else
             {
-                MessageBox.Show("You can't close Updater while he doing hes work.");
+                this.WindowState = WindowState.Minimized;
+                System.Windows.MessageBox.Show("You can't close Updater while he doing hes work.");
             }
         }
 
@@ -217,6 +228,59 @@ namespace RFUpdater
         private void SearchBtn_Click(object sender, RoutedEventArgs e)
         {
             Frame0.Content = ASearchPage;
+        }
+
+        private void CreateNotifyIcon()
+        {
+            notifyIcon = new NotifyIcon(new Container());
+            ContextMenu context_menu = new ContextMenu();
+
+            context_menu.MenuItems.AddRange(new MenuItem[] {new MenuItem("Main page", new EventHandler(StartPageClicked)),new MenuItem("Library", new EventHandler(LibraryPageClicked)), new MenuItem("Search", new EventHandler(SearchPageClicked)), new MenuItem("Settings", new EventHandler(SettingsPageClicked)), new MenuItem("Close", new EventHandler(ExitClicked)) });
+
+            notifyIcon.Icon = Properties.Resources.RFUicon;
+            notifyIcon.ContextMenu = context_menu;
+            notifyIcon.Text = "RFU";
+            notifyIcon.Visible = true;
+        }
+
+        /* 
+         public SettingsPage ASettingsPage;
+        public StartPage AStartPage;
+        public LibraryPage ALibraryPage;
+        public SearchPage ASearchPage;
+        public UserPage AUserPage;
+         */
+
+        [STAThread]
+        private void StartPageClicked(object sender, EventArgs e)
+        {
+            Frame0.Content = AStartPage;
+            this.WindowState = WindowState.Normal;
+            this.ShowInTaskbar = true;
+        }
+        private void LibraryPageClicked(object sender, EventArgs e)
+        {
+            Frame0.Content = ALibraryPage;
+            this.WindowState = WindowState.Normal;
+            this.ShowInTaskbar = true;
+        }
+        private void SearchPageClicked(object sender, EventArgs e)
+        {
+            Frame0.Content = ASearchPage;
+            this.WindowState = WindowState.Normal;
+            this.ShowInTaskbar = true;
+        }
+        private void SettingsPageClicked(object sender, EventArgs e)
+        {
+            Frame0.Content = ASettingsPage;
+            this.WindowState = WindowState.Normal;
+            this.ShowInTaskbar = true;
+        }
+
+        private void ExitClicked(object sender, EventArgs e)
+        {
+            Close();
+            notifyIcon.Dispose();
         }
     }
 }
