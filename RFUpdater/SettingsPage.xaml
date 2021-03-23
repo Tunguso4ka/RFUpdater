@@ -8,26 +8,46 @@
       d:DesignHeight="520" d:DesignWidth="500"
       Title="SettingsPage">
 
-    <Grid Background="#065275">
-        <ScrollViewer>
+    <Grid>
+        <ScrollViewer VerticalScrollBarVisibility="Hidden">
             <StackPanel Margin="5,5,5,5">
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="Language:" Style="{StaticResource GPTextBlockWhite}"/>
+                    <Separator Margin="3,0"/>
                     <RadioButton Content="English" Name="LRB0" Foreground="White"/>
+                    <Separator Margin="3,0"/>
                     <RadioButton Content="Русский" Name="LRB1" Foreground="White"/>
                 </StackPanel>
-                <Separator Margin="0,5"/>
+                <Separator Margin="0,3"/>
                 <StackPanel Orientation="Horizontal">
                     <CheckBox Content="Autoupdate" Name="CB0" Foreground="White"/>
                 </StackPanel>
-                <Separator Margin="0,5"/>
+                <Separator Margin="0,3"/>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="Select folder:" Style="{StaticResource GPTextBlockWhite}"/>
+                    <Separator Margin="3,0"/>
                     <RadioButton Content="C:\Games\" Name="LRB2" Foreground="White"/>
+                    <Separator Margin="3,0"/>
                     <RadioButton Content="D:\Games\" Name="LRB3" Foreground="White"/>
+                </StackPanel>
+                <Separator Margin="0,3"/>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="App theme:" Style="{StaticResource GPTextBlockWhite}"/>
+                    <Separator Margin="3,0"/>
+                    <RadioButton Content="White" Name="LRB4" Foreground="White"/>
+                    <Separator Margin="3,0"/>
+                    <RadioButton Content="Dark" Name="LRB5" Foreground="White"/>
+                    <Separator Margin="3,0"/>
+                    <RadioButton Content="Standart Blue" Name="LRB6" Foreground="White" IsEnabled="False"/>
+                </StackPanel>
+                <StackPanel HorizontalAlignment="Left" Orientation="Horizontal">
+                    <Button Content="Log out" Style="{StaticResource CloseButtonStyleWhite}" Name="LogOutBtn" Click="LogOutBtn_Click" Width="100"/>
+                </StackPanel>
+                <StackPanel HorizontalAlignment="Left" Orientation="Horizontal">
+                    <Button Content="About" Style="{StaticResource ButtonStyleWhite}" Name="AboutBtn" Click="AboutBtn_Click" Width="100"/>
                 </StackPanel>
             </StackPanel>
         </ScrollViewer>
-        <Button Content="Save and restart app" Name="SaveBtn" Click="SaveBtn_Click" Style="{StaticResource ButtonStyleWhite}" VerticalAlignment="Bottom"/>
+        <Button Content="Save and restart app" Name="SaveBtn" Click="SaveBtn_Click" Style="{StaticResource ButtonStyleWhite}" VerticalAlignment="Bottom" Width="auto"/>
     </Grid>
 </Page>

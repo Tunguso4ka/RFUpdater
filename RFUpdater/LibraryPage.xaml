@@ -5,17 +5,26 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:RFUpdater"
       mc:Ignorable="d" 
-      d:DesignHeight="335" d:DesignWidth="400"
+      d:DesignHeight="340" d:DesignWidth="400"
       Title="LibraryPage">
 
     <Grid>
-        <WrapPanel>
-            <Button Style="{StaticResource ButtonStyleWhiteWithBackground}" Height="Auto" Margin="5" Click="RandomFightsBtn_Click">
-                <StackPanel>
-                    <Image Height="70" Margin="5,5,5,0"/>
-                    <TextBlock Text="Game Name" Foreground="White" Margin="5,0,5,5" Name="GameNameTextBox"/>
-                </StackPanel>
-            </Button>
-        </WrapPanel>
+        <ItemsControl Name="GameItemsControl">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Button Style="{StaticResource ButtonStyleWhiteWithBackground}" Height="Auto" Width="Auto" Margin="5" Click="AGameBtn_Click" Tag="{Binding BtnTag}">
+                        <StackPanel>
+                            <Image Height="70" Width="70" Margin="5,5,5,0" Name="RFImage" Source="{Binding AGameSource}"/>
+                            <TextBlock Text="{Binding AGameName}" Foreground="White" Margin="5,0,5,5" Name="RFTextBox" FontFamily="{DynamicResource IBMPlexLight}"/>
+                        </StackPanel>
+                    </Button>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel/>
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+        </ItemsControl>
     </Grid>
 </Page>

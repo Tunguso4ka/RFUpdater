@@ -5,25 +5,36 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:RFUpdater"
       mc:Ignorable="d"
-      d:DesignHeight="520" d:DesignWidth="500"
+      d:DesignHeight="340" d:DesignWidth="400"
       Title="GamePage">
 
-    <Grid Background="#065275">
-        <ScrollViewer>
+    <Grid>
+        <ScrollViewer VerticalScrollBarVisibility="Hidden">
             <StackPanel Margin="5,5,5,5">
-                <TextBlock Text="GameName" Name="GameNameTextBlock" FontSize="36" Style="{StaticResource GPTextBlockWhite}" HorizontalAlignment="Center"/>
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="Version: 0.0.0.0" Name="VersionTextBlock" Style="{StaticResource GPTextBlockWhite}"/>
-                    <Separator Margin="5,0"/>
-                    <TextBlock Text="Status: Not installed" Name="StatusTextBlock" Style="{StaticResource GPTextBlockWhite}"/>
-                    <Separator Margin="5,0"/>
-                    <TextBlock Text="Downloading speed: " Name="DownSpeedTextBlock" Style="{StaticResource GPTextBlockWhite}"/>
+                <TextBlock Text="GameName" Name="GameNameTextBlock" FontSize="36" Style="{StaticResource GPTextBlockWhite}" HorizontalAlignment="Center" FontFamily="{DynamicResource IBMPlexLight}" VerticalAlignment="Center" Background="{DynamicResource {x:Static SystemColors.MenuHighlightBrushKey}}"/>
+                <StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Button Content="Install" Name="InstallBtn" Style="{StaticResource ButtonStyleWhite}" Click="InstallBtn_Click" Width="50" ToolTip="Install" Height="30" FontSize="16"/>
+                        <Button Content="" Name="DeleteBtn" Style="{StaticResource ButtonStyleWhite}" FontFamily="Segoe MDL2 Assets" Click="DeleteBtn_Click" Width="30" ToolTip="Delete" Height="30" FontSize="16"/>
+                        <Separator Margin="5,0"/>
+                        <Button Content="" Name="LikeBtn" Style="{StaticResource ButtonStyleWhite}" FontFamily="Segoe MDL2 Assets" Click="LikeBtn_Click" Width="30" ToolTip="Like game" Height="30" FontSize="16"/>
+                        <Button Content="" Name="DisLikeBtn" Style="{StaticResource ButtonStyleWhite}" FontFamily="Segoe MDL2 Assets" Click="DisLikeBtn_Click" Width="30" ToolTip="Dislike game" Height="30" FontSize="16"/>
+                        <Button x:Name="GameInfoHideBtn" Content="" Style="{StaticResource ButtonStyleWhite}" Width="30" FontFamily="Segoe MDL2 Assets" Click="GameInfoHideBtn_Click" ToolTip="Show info" Height="30" FontSize="16"/>
+                    </StackPanel>
+                    <StackPanel Visibility="Collapsed" Name="GameInfoStackPanel">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="New version: 0.0.0.0" Name="NewVersionTextBlock" Style="{StaticResource GPTextBlockWhite}"/>
+                            <Separator Margin="5,0"/>
+                            <TextBlock Text="This version: 0.0.0.0" Name="ThisVersionTextBlock" Style="{StaticResource GPTextBlockWhite}"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Status: Not installed" Name="StatusTextBlock" Style="{StaticResource GPTextBlockWhite}"/>
+                            <Separator Margin="5,0"/>
+                            <TextBlock Text="Downloading speed: " Name="DownSpeedTextBlock" Style="{StaticResource GPTextBlockWhite}"/>
+                        </StackPanel>
+                    </StackPanel>
                 </StackPanel>
                 <ProgressBar Value="0" Name="ProgressBar0"/>
-                <StackPanel Orientation="Horizontal">
-                    <Button Content="Install" Name="InstallBtn" Style="{StaticResource ButtonStyleWhite}" Click="InstallBtn_Click" Width="100"/>
-                    <Button Content="🗑" Name="DeleteBtn" Style="{StaticResource ButtonStyleWhite}" Click="DeleteBtn_Click" Width="40"/>
-                </StackPanel>
             </StackPanel>
         </ScrollViewer>
     </Grid>

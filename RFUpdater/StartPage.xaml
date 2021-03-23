@@ -8,11 +8,11 @@
       d:DesignHeight="520" d:DesignWidth="500"
       Title="StartPage">
 
-    <Grid Background="#065275">
-        <ScrollViewer>
-            <StackPanel Margin="5,5,5,5">
+    <Grid>
+        <ScrollViewer VerticalScrollBarVisibility="Hidden">
+            <StackPanel Margin="5">
                 <TextBlock Text="Good day!" Style="{StaticResource GPTextBlockWhite}" Name="GDTextBlock"/>
-                <TextBlock Text="Game status" Style="{StaticResource GPTextBlockWhite}" Name="GameStatusTextBlock" Grid.Row="1" FontFamily="Yu Gothic UI Light" TextWrapping="Wrap"/>
+                <Image Source="https://drive.google.com/uc?id=1vm1sKGFaGSlJWCSaqyiMdR2z62FUTewn" Width="390" Height="300"/>
             </StackPanel>
         </ScrollViewer>
     </Grid>
