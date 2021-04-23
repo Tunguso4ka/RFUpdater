@@ -13,5 +13,6 @@ namespace RFUpdater
     /// </summary>
     public partial class App : Application
     {
+
     }
 }

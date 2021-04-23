@@ -15,12 +15,12 @@
         Title="MainWindow" Height="360" Width="400">
 
     <Grid>
-        <Grid Background="#0E2530" Name="FirstGrid">
+        <Grid Background="#0A060E" Name="FirstGrid">
             <Grid.RowDefinitions>
                 <RowDefinition Height="20"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <Grid Grid.Row="1" Background="#0A3246" Name="SecondGrid">
+            <Grid Grid.Row="1" Background="#110B1D" Name="SecondGrid">
                 <Frame Name="Frame0" NavigationUIVisibility="Hidden"/>
             </Grid>
         </Grid>

@@ -7,7 +7,7 @@ using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Forms;
+using Forms = System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Media;
 
@@ -20,7 +20,7 @@ namespace RFUpdater
     {
         Thread settingsThread = new Thread(() => { });
 
-        NotifyIcon notifyIcon;
+        Forms.NotifyIcon notifyIcon;
 
         string SettingsPath;
         string DownGamesPath;
@@ -232,10 +232,10 @@ namespace RFUpdater
 
         private void CreateNotifyIcon()
         {
-            notifyIcon = new NotifyIcon(new Container());
-            ContextMenu context_menu = new ContextMenu();
+            notifyIcon = new Forms.NotifyIcon(new Container());
+            Forms.ContextMenu context_menu = new Forms.ContextMenu();
 
-            context_menu.MenuItems.AddRange(new MenuItem[] {new MenuItem("Main page", new EventHandler(StartPageClicked)),new MenuItem("Library", new EventHandler(LibraryPageClicked)), new MenuItem("Search", new EventHandler(SearchPageClicked)), new MenuItem("Settings", new EventHandler(SettingsPageClicked)), new MenuItem("Close", new EventHandler(ExitClicked)) });
+            context_menu.MenuItems.AddRange(new Forms.MenuItem[] {new Forms.MenuItem("Main page", new EventHandler(StartPageClicked)),new Forms.MenuItem("Library", new EventHandler(LibraryPageClicked)), new Forms.MenuItem("Search", new EventHandler(SearchPageClicked)), new Forms.MenuItem("Settings", new EventHandler(SettingsPageClicked)), new Forms.MenuItem("Close", new EventHandler(ExitClicked)) });
 
             notifyIcon.Icon = Properties.Resources.RFUicon;
             notifyIcon.ContextMenu = context_menu;
@@ -279,8 +279,8 @@ namespace RFUpdater
 
         private void ExitClicked(object sender, EventArgs e)
         {
-            Close();
             notifyIcon.Dispose();
+            Application.Current.Dispatcher.Invoke(Application.Current.Shutdown);
         }
     }
 }

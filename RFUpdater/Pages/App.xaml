@@ -4,7 +4,7 @@
              xmlns:local="clr-namespace:RFUpdater"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-        <Color x:Key="ButtonBackgroundColor" R="18" G="89" B="125" A="125"/>
+        <Color x:Key="ButtonBackgroundColor" R="236" G="231" B="246" A="125"/>
         <SolidColorBrush x:Key="AButtonBackgroundColor" Color="{StaticResource ButtonBackgroundColor}"/>
 
         <Style TargetType="Button" x:Key="ButtonStyleWhite">

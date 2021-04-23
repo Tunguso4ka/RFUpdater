@@ -27,7 +27,7 @@ namespace RFUpdater
             {
                 AboutTextBox.Text += "\nUser login: n";
             }
-            AboutTextBox.Text += "\nMy twitter: https://twitter.com/tunguso4ka \nMy github: https://twitter.com/tunguso4ka \nI <3 Stef \n\nThank you very much for using <3";
+            AboutTextBox.Text += "\nMy twitter: https://github.com/tunguso4ka \nMy github: https://twitter.com/tunguso4ka \nI <3 Stef \n\nThank you very much for using <3";
         }
 
         private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)

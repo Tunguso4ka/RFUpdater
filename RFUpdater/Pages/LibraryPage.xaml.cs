@@ -30,22 +30,7 @@ namespace RFUpdater
         void GetGameListTxt()
         {
             GameListFilePath = Properties.Settings.Default.AppDataPath + "gamelist.txt";
-            try
-            {
-                GoogleDiscGamesCheck();
-                //FolderGameCheck();
-            }
-            catch
-            {
-                try
-                {
-                    GoogleDiscGamesCheck();
-                }
-                catch
-                {
-                    MessageBox.Show("Error: check your internet connection.", "Error");
-                }
-            }
+            GoogleDiscGamesCheck();
         }
 
         void FolderGameCheck()
@@ -72,28 +57,35 @@ namespace RFUpdater
 
         async void GoogleDiscGamesCheck()
         {
-            if (File.Exists(GameListFilePath))
+            try
             {
+                if (File.Exists(GameListFilePath))
+                {
+                    File.Delete(GameListFilePath);
+                }
+                webClient.DownloadFile(GameListFileUri, GameListFilePath);
+                using (StreamReader StreamReader = new StreamReader(GameListFilePath))
+                {
+                    int LineNum = 0;
+                    string[] LineList;
+                    string line;
+                    while ((line = await StreamReader.ReadLineAsync()) != null)
+                    {
+                        LineList = line.Split('}');
+                        GamesNamesList[LineNum] = LineList[0];
+                        GamesPathesList[LineNum] = LineList[2];
+                        ListWithGameData.Add(new GameData() { AGameName = LineList[0], AGameSource = new Uri(LineList[1], UriKind.RelativeOrAbsolute), BtnTag = Convert.ToString(LineNum) });
+                        LineNum++;
+                    }
+                    StreamReader.Dispose();
+                    GameItemsControl.ItemsSource = ListWithGameData;
+                }
                 File.Delete(GameListFilePath);
             }
-            webClient.DownloadFile(GameListFileUri, GameListFilePath);
-            using (StreamReader StreamReader = new StreamReader(GameListFilePath))
+            catch
             {
-                int LineNum = 0;
-                string[] LineList;
-                string line;
-                while ((line = await StreamReader.ReadLineAsync()) != null)
-                {
-                    LineList = line.Split('}');
-                    GamesNamesList[LineNum] = LineList[0];
-                    GamesPathesList[LineNum] = LineList[2];
-                    ListWithGameData.Add(new GameData() { AGameName = LineList[0], AGameSource = new Uri(LineList[1], UriKind.RelativeOrAbsolute), BtnTag = Convert.ToString(LineNum) });
-                    LineNum++;
-                }
-                StreamReader.Dispose();
-                GameItemsControl.ItemsSource = ListWithGameData;
+                MessageBox.Show("Error: check your internet connection.", "Error");
             }
-            File.Delete(GameListFilePath);
         }
 
         private void AGameBtn_Click(object sender, RoutedEventArgs e)

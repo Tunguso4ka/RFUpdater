@@ -21,7 +21,7 @@
                         <Button Content="" Name="DisLikeBtn" Style="{StaticResource ButtonStyleWhite}" FontFamily="Segoe MDL2 Assets" Click="DisLikeBtn_Click" Width="30" ToolTip="Dislike game" Height="30" FontSize="16"/>
                         <Button x:Name="GameInfoHideBtn" Content="" Style="{StaticResource ButtonStyleWhite}" Width="30" FontFamily="Segoe MDL2 Assets" Click="GameInfoHideBtn_Click" ToolTip="Show info" Height="30" FontSize="16"/>
                     </StackPanel>
-                    <StackPanel Visibility="Collapsed" Name="GameInfoStackPanel">
+                    <StackPanel Visibility="Collapsed" Name="GameInfoStackPanel" Background="{DynamicResource {x:Static SystemColors.MenuHighlightBrushKey}}">
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Text="New version: 0.0.0.0" Name="NewVersionTextBlock" Style="{StaticResource GPTextBlockWhite}"/>
                             <Separator Margin="5,0"/>
