@@ -253,5 +253,8 @@
   <ItemGroup>
     <Resource Include="Resources\RFULogoPurple.ico" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Starter\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -153,6 +153,11 @@ namespace RFUpdater
         void BetaCheck()
         {
             //Properties.Settings.Default.IsBetaOn
+            if(Properties.Settings.Default.IsBetaOn == true)
+            {
+                SearchBtn.Visibility = Visibility.Visible;
+                UserBtn.Visibility = Visibility.Visible;
+            }
         }
         void AuthorizCheck()
         {

@@ -27,19 +27,46 @@ namespace RFUpdater
         int ThisUserLikeNum = 0;
         DirectoryInfo FolderPathDirectory;
 
-        public GamePage(string gameName, Version newGameVersion, Version thisGameVersion, string gamePath, string gameUpdateUrl, int gameStatus, int tag)
+        public GamePage(string gameName, Version newGameVersion, Version thisGameVersion, string gamePath, string gameUpdateUrl, int tag)
         {
             InitializeComponent();
 
             GameName = gameName;
             GameNameTextBlock.Text = GameName;
+
+            //
             NewGameVersion = newGameVersion;
-            NewVersionTextBlock.Text = "New version: " + NewGameVersion;
             ThisGameVersion = thisGameVersion;
-            ThisVersionTextBlock.Text = "This version: " + thisGameVersion;
+
+            if(thisGameVersion == new Version("0.0"))
+            {
+                GameStatus = -2;
+            }
+            else
+            {
+                switch (NewGameVersion.CompareTo(ThisGameVersion))
+                {
+                    case 0:
+                        GameStatus = 0; //такая же
+                        break;
+                    case 1:
+                        GameStatus = 1; //новее
+                        break;
+                    case -1:
+                        GameStatus = -1; //старше
+                        break;
+                }
+            }
+
+            //новая и текущая версия вносятся в текстблоки
+            if (!NewGameVersion.Equals(ThisGameVersion))
+            {
+                NewVersionTextBlock.Text = "New version: " + NewGameVersion;
+            }
+            ThisVersionTextBlock.Text = "This version: " + ThisGameVersion;
+
             GamePath = gamePath;
             GameUpdateUri = gameUpdateUrl;
-            GameStatus = gameStatus;
             ATag = tag;
 
             FolderPath = Properties.Settings.Default.SaveFolderPath + GameName;
@@ -48,7 +75,7 @@ namespace RFUpdater
             ProgressBar0.Visibility = Visibility.Hidden;
             DownSpeedTextBlock.Visibility = Visibility.Hidden;
 
-            if (GameStatus == 0)
+            if (GameStatus == -2)
             {
                 StatusTextBlock.Text = "Status: Not installed.";
                 InstallBtn.Content = "⬇💾Install";
@@ -57,20 +84,36 @@ namespace RFUpdater
             }
             else if (GameStatus == 1)
             {
-                StatusTextBlock.Text = "Status: Installed.";
-                InstallBtn.Content = "🎮Play";
-                InstallBtn.ToolTip = "Play";
-                DeleteBtn.Visibility = Visibility.Visible;
-            }
-            else if (GameStatus == 2)
-            {
                 StatusTextBlock.Text = "Status: Update found.";
                 InstallBtn.Content = "🆕Update";
                 InstallBtn.ToolTip = "Update";
                 DeleteBtn.Visibility = Visibility.Visible;
             }
+            else
+            {
+                StatusTextBlock.Text = "Status: Installed.";
+                InstallBtn.Content = "🎮Play";
+                InstallBtn.ToolTip = "Play";
+                DeleteBtn.Visibility = Visibility.Visible;
+            }
+
+            InfoRead();
 
             //MessageBox.Show("" + GameUpdateUri);
+        }
+
+        async void InfoRead()
+        {
+            try
+            {
+                string WhatsNewPath = FolderPath + @"\" + ThisGameVersion + @"\WhatsNew.txt";
+                if (GameStatus != 0 && File.Exists(WhatsNewPath))
+                {
+                    StreamReader _StreamReader = new StreamReader(WhatsNewPath);
+                    GameUpdateInfoTextBlock.Text = await _StreamReader.ReadToEndAsync();
+                }
+            }
+            catch { }
         }
 
         private void InstallBtn_Click(object sender, RoutedEventArgs e)

@@ -97,7 +97,6 @@ namespace RFUpdater
             string GameUpdateUrl;
             string GameInfoPath = Properties.Settings.Default.AppDataPath + "RFV.txt";
             string gamePath;
-            int gameStatus = 0;
 
             try
             {
@@ -108,6 +107,7 @@ namespace RFUpdater
             {
                 thisGameVersion = new Version("0.0");
                 gamePath = "";
+                MessageBox.Show("Error: cant get saved games path or/and saved games versions");
             }
 
             webClient.DownloadFile(new Uri(GamesPathesList[Tag], UriKind.RelativeOrAbsolute), GameInfoPath);
@@ -117,31 +117,20 @@ namespace RFUpdater
                 newGameVersion = new Version(StreamReader.ReadLine());
                 GameUpdateUrl = StreamReader.ReadLine();
                 StreamReader.Dispose();
+
+                MessageBox.Show(" 1: " + newGameVersion, GameUpdateUrl);
             }
             File.Delete(GameInfoPath);
-
-            if (newGameVersion == thisGameVersion)
-            {
-                gameStatus = 1;
-            }
-            else if (newGameVersion > thisGameVersion)
-            {
-                gameStatus = 2;
-            }
-            else if (thisGameVersion == new Version("0.0"))
-            {
-                gameStatus = 0;
-            }
 
             if (Properties.Settings.Default.SavedGamesIsReal == false)
             {
                 thisGameVersion = new Version("0.0");
                 gamePath = "";
-                gameStatus = 0;
+                MessageBox.Show("0");
             }
             //https://filetransfer.io/data-package/hayIzLuP/download GamesPathesList[Tag]
             //MessageBox.Show("" + Tag);
-            RandomFightsPage = new GamePage(GamesNamesList[Tag], newGameVersion, thisGameVersion, gamePath, GameUpdateUrl, gameStatus, Tag);
+            RandomFightsPage = new GamePage(GamesNamesList[Tag], newGameVersion, thisGameVersion, gamePath, GameUpdateUrl, Tag);
             //string gameName, Version newGameVersion, !Version thisGameVersion, !string gamePath, string gameUpdateUrl
             ((MainWindow)Window.GetWindow(this)).Frame0.Content = RandomFightsPage;
 
