@@ -18,7 +18,7 @@ namespace RFUpdater
     /// </summary>
     public partial class MainWindow : Window
     {
-        Thread settingsThread = new Thread(() => { });
+        //Thread settingsThread = new Thread(() => { });
 
         Forms.NotifyIcon notifyIcon;
 
@@ -40,8 +40,7 @@ namespace RFUpdater
         //ints
 
         //strings[]
-        public string[] SavedGamesVersions = new string[99];
-        public string[] SavedGamesPaths = new string[99];
+        public string[] SavedGamesInfo = new string[99];
 
         public MainWindow()
         {
@@ -100,26 +99,22 @@ namespace RFUpdater
                 try
                 {
                     BinaryReader BinaryReader = new BinaryReader(File.OpenRead(DownGamesPath));
-                    string Line;
-                    string[] LineList;
                     int LineNum = 0;
                     while (BinaryReader.PeekChar() > -1)
                     {
-                        Line = BinaryReader.ReadString();
-                        LineList = Line.Split('}');
-                        SavedGamesVersions[LineNum] = LineList[0];
-                        SavedGamesPaths[LineNum] = LineList[1];
+                        SavedGamesInfo[LineNum] = BinaryReader.ReadString();
                         LineNum++;
                     }
                     BinaryReader.Dispose();
 
-                    //MessageBox.Show(((MainWindow)Window.GetWindow(this)).SavedGamesVersions[0] + "}" + ((MainWindow)Window.GetWindow(this)).SavedGamesPaths[0]);
+                    //MessageBox.Show(SavedGamesInfo[0]);
 
                     Properties.Settings.Default.SavedGamesIsReal = true;
                 }
                 catch
                 {
                     Properties.Settings.Default.SavedGamesIsReal = false;
+                    MessageBox.Show(SavedGamesInfo[0], "Error");
                 }
             }
             else

@@ -205,7 +205,8 @@ namespace RFUpdater
                         }
                         else
                         {
-                            BinaryWriter.Write(((MainWindow)Window.GetWindow(this)).SavedGamesVersions[i] + "}" + ((MainWindow)Window.GetWindow(this)).SavedGamesPaths[i]);
+                            string[] _SavedGamesInfo = ((MainWindow)Window.GetWindow(this)).SavedGamesInfo[i].Split('}');
+                            BinaryWriter.Write(_SavedGamesInfo[0] + "}" + _SavedGamesInfo[1]); //Version}Path
                         }
                         i++;
                     }
@@ -258,7 +259,8 @@ namespace RFUpdater
                 }
                 else
                 {
-                    BinaryWriter.Write(((MainWindow)Window.GetWindow(this)).SavedGamesVersions[i] + "}" + ((MainWindow)Window.GetWindow(this)).SavedGamesPaths[i]);
+                    string[] _SavedGamesInfo = ((MainWindow)Window.GetWindow(this)).SavedGamesInfo[i].Split('}');
+                    BinaryWriter.Write(_SavedGamesInfo[0] + "}" + _SavedGamesInfo[1]); //Version}Path
                 }
                 i++;
             }

@@ -84,7 +84,7 @@ namespace RFUpdater
             }
             catch
             {
-                MessageBox.Show("Error: check your internet connection.", "Error");
+                MessageBox.Show("Error: check your internet connection. ", "Error");
             }
         }
 
@@ -100,8 +100,10 @@ namespace RFUpdater
 
             try
             {
-                gamePath = ((MainWindow)Window.GetWindow(this)).SavedGamesPaths[Tag];
-                thisGameVersion = new Version(((MainWindow)Window.GetWindow(this)).SavedGamesVersions[Tag]);
+                string[] _SavedGamesInfo = ((MainWindow)Window.GetWindow(this)).SavedGamesInfo[Tag].Split('}');
+
+                thisGameVersion = new Version(_SavedGamesInfo[0]);
+                gamePath = _SavedGamesInfo[1];
             }
             catch
             {
