@@ -15,7 +15,7 @@
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <PublishUrl>C:\Users\Kkoso\OneDrive\Рабочий стол\just a papka\My gamesi%29%29%29\RFUpdater\0.1.5\</PublishUrl>
+    <PublishUrl>D:\just a papka\My gamesi%29%29%29\RFUpdater\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -28,8 +28,7 @@
     <TargetCulture>en</TargetCulture>
     <ProductName>RFU</ProductName>
     <PublisherName>Kira Kosova</PublisherName>
-    <AutorunEnabled>true</AutorunEnabled>
-    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationRevision>1</ApplicationRevision>
     <ApplicationVersion>0.1.6.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
