@@ -39,7 +39,7 @@
                 <Separator Margin="3,0"/>
                 <RadioButton Content="Standart Blue" Name="LRB6" Foreground="White" IsEnabled="False"/>
             </StackPanel>
-            <Button Content="Log out" Style="{StaticResource CloseButtonStyleWhite}" Name="LogOutBtn" Click="LogOutBtn_Click" Width="100" HorizontalAlignment="Left"/>
+            <Button Content="Log out" Style="{StaticResource ButtonStyleWhite}" Name="LogOutBtn" Click="LogOutBtn_Click" Width="100" HorizontalAlignment="Left"/>
             <Button Content="About" Style="{StaticResource ButtonStyleWhite}" Name="AboutBtn" Click="AboutBtn_Click" Width="100" HorizontalAlignment="Left"/>
             <Button Content="Save and restart app" Name="SaveBtn" Click="SaveBtn_Click" Style="{StaticResource ButtonStyleWhite}" Width="auto" HorizontalAlignment="Left"/>
         </StackPanel>

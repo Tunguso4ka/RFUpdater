@@ -19,6 +19,14 @@ namespace RFUpdater
         string[] GamesNamesList = new string[99];
         string[] GamesPathesList = new string[99];
 
+        public int _Tag;
+        public Version newGameVersion;
+        public Version thisGameVersion;
+        public string GameUpdateUrl;
+        public string GameInfoPath;
+        public string gamePath;
+        public string GameName;
+
         public GamePage RandomFightsPage;
         Uri ImageSourceUri = new Uri("https://drive.google.com/uc?id=1pbvzQhhskJR8Vi-y-rC9AJ4iI1uylJ5g", UriKind.RelativeOrAbsolute); //RFU logo - https://drive.google.com/uc?id=1vm1sKGFaGSlJWCSaqyiMdR2z62FUTewn https://drive.google.com/file/d/1vm1sKGFaGSlJWCSaqyiMdR2z62FUTewn/view?usp=sharing gamelist - https://drive.google.com/uc?id=1QzOoLrQKW48salKmltEPDAis2Rd_GFz9 https://drive.google.com/uc?id=1Ia1E7q7Hpz-zihtBMxI8jDgGk5tXEk-X
         public LibraryPage()
@@ -91,16 +99,12 @@ namespace RFUpdater
         private void AGameBtn_Click(object sender, RoutedEventArgs e)
         {
             Button PressedButton = (Button)sender;
-            int Tag = Convert.ToInt32((string)PressedButton.Tag);
-            Version newGameVersion;
-            Version thisGameVersion;
-            string GameUpdateUrl;
-            string GameInfoPath = Properties.Settings.Default.AppDataPath + "RFV.txt";
-            string gamePath;
+            _Tag = Convert.ToInt32((string)PressedButton.Tag);
+            GameInfoPath = Properties.Settings.Default.AppDataPath + "RFV.txt";
 
             try
             {
-                string[] _SavedGamesInfo = ((MainWindow)Window.GetWindow(this)).SavedGamesInfo[Tag].Split('}');
+                string[] _SavedGamesInfo = ((MainWindow)Window.GetWindow(this)).SavedGamesInfo[_Tag].Split('}');
 
                 thisGameVersion = new Version(_SavedGamesInfo[0]);
                 gamePath = _SavedGamesInfo[1];
@@ -112,7 +116,7 @@ namespace RFUpdater
                 MessageBox.Show("Error: cant get saved games path or/and saved games versions");
             }
 
-            webClient.DownloadFile(new Uri(GamesPathesList[Tag], UriKind.RelativeOrAbsolute), GameInfoPath);
+            webClient.DownloadFile(new Uri(GamesPathesList[_Tag], UriKind.RelativeOrAbsolute), GameInfoPath);
 
             using (StreamReader StreamReader = new StreamReader(GameInfoPath))
             {
@@ -120,7 +124,7 @@ namespace RFUpdater
                 GameUpdateUrl = StreamReader.ReadLine();
                 StreamReader.Dispose();
 
-                MessageBox.Show(" 1: " + newGameVersion, GameUpdateUrl);
+                //MessageBox.Show(" 1: " + newGameVersion, GameUpdateUrl);
             }
             File.Delete(GameInfoPath);
 
@@ -130,10 +134,14 @@ namespace RFUpdater
                 gamePath = "";
                 MessageBox.Show("0");
             }
+
+            GameName = GamesNamesList[_Tag];
+
             //https://filetransfer.io/data-package/hayIzLuP/download GamesPathesList[Tag]
             //MessageBox.Show("" + Tag);
-            RandomFightsPage = new GamePage(GamesNamesList[Tag], newGameVersion, thisGameVersion, gamePath, GameUpdateUrl, Tag);
+            RandomFightsPage = new GamePage(this);
             //string gameName, Version newGameVersion, !Version thisGameVersion, !string gamePath, string gameUpdateUrl
+            //MessageBox.Show(newGameVersion + "", "0");
             ((MainWindow)Window.GetWindow(this)).Frame0.Content = RandomFightsPage;
 
         }

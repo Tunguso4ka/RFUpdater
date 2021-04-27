@@ -18,6 +18,6 @@
             </StackPanel>
             <TextBox Name="AboutTextBox" Height="150" Foreground="White" Background="Transparent" IsReadOnly="True" BorderBrush="Transparent"/>
         </StackPanel>
-        <Button Content="" x:Name="CloseBtn" Click="CloseBtn_Click" Style="{StaticResource CloseButtonStyleWhite}" FontFamily="Segoe MDL2 Assets" ToolTipService.ToolTip="Close" VerticalAlignment="Top" HorizontalAlignment="Right"/>
+        <Button Content="" x:Name="CloseBtn" Click="CloseBtn_Click" Style="{StaticResource ButtonStyleWhite}" FontFamily="Segoe MDL2 Assets" ToolTipService.ToolTip="Close" VerticalAlignment="Top" HorizontalAlignment="Right"/>
     </Grid>
 </Window>

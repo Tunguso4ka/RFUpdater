@@ -34,8 +34,8 @@
 
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top">
             <Button Content="" x:Name="UserBtn" Click="UserBtn_Click" Style="{StaticResource ButtonStyleWhite}" FontFamily="Segoe MDL2 Assets" ToolTipService.ToolTip="Authorize" Visibility="Collapsed"/>
-            <Button Content="" x:Name="MinimBtn" Click="MinimBtn_Click" Style="{StaticResource CloseButtonStyleWhite}" FontFamily="Segoe MDL2 Assets" ToolTipService.ToolTip="Minimize"/>
-            <Button Content="" x:Name="CloseBtn" Click="CloseBtn_Click" Style="{StaticResource CloseButtonStyleWhite}" FontFamily="Segoe MDL2 Assets" ToolTipService.ToolTip="Close"/>
+            <Button Content="" x:Name="MinimBtn" Click="MinimBtn_Click" Style="{StaticResource ButtonStyleWhite}" FontFamily="Segoe MDL2 Assets" ToolTipService.ToolTip="Minimize"/>
+            <Button Content="" x:Name="CloseBtn" Click="CloseBtn_Click" Style="{StaticResource ButtonStyleWhite}" FontFamily="Segoe MDL2 Assets" ToolTipService.ToolTip="Close"/>
         </StackPanel>
     </Grid>
 </Window>

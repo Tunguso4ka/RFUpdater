@@ -23,22 +23,28 @@ namespace RFUpdater
         string GameUpdateUri;
         string SettingsPath = Properties.Settings.Default.AppDataPath + "gamesonthispc.dat";
         int GameStatus;
-        int ATag;
+        int _Tag;
         int ThisUserLikeNum = 0;
         DirectoryInfo FolderPathDirectory;
 
-        public GamePage(string gameName, Version newGameVersion, Version thisGameVersion, string gamePath, string gameUpdateUrl, int tag)
+        public GamePage(LibraryPage _LibraryPage)
         {
             InitializeComponent();
 
-            GameName = gameName;
+            //
+            GameName = _LibraryPage.GameName;
             GameNameTextBlock.Text = GameName;
 
-            //
-            NewGameVersion = newGameVersion;
-            ThisGameVersion = thisGameVersion;
+            NewGameVersion = _LibraryPage.newGameVersion;
+            ThisGameVersion = _LibraryPage.thisGameVersion;
 
-            if(thisGameVersion == new Version("0.0"))
+            GamePath = _LibraryPage.gamePath;
+            GameUpdateUri = _LibraryPage.GameUpdateUrl;
+            _Tag = _LibraryPage._Tag;
+
+            //MessageBox.Show(NewGameVersion + "", "0");
+
+            if (ThisGameVersion == new Version("0.0"))
             {
                 GameStatus = -2;
             }
@@ -59,15 +65,11 @@ namespace RFUpdater
             }
 
             //новая и текущая версия вносятся в текстблоки
+            VersionTextBlock.Text = "This version: " + ThisGameVersion;
             if (!NewGameVersion.Equals(ThisGameVersion))
             {
-                NewVersionTextBlock.Text = "New version: " + NewGameVersion;
+                VersionTextBlock.Text += " New version: " + NewGameVersion;
             }
-            ThisVersionTextBlock.Text = "This version: " + ThisGameVersion;
-
-            GamePath = gamePath;
-            GameUpdateUri = gameUpdateUrl;
-            ATag = tag;
 
             FolderPath = Properties.Settings.Default.SaveFolderPath + GameName;
             FolderPath = FolderPath.Replace(' ', '_');
@@ -113,7 +115,10 @@ namespace RFUpdater
                     GameUpdateInfoTextBlock.Text = await _StreamReader.ReadToEndAsync();
                 }
             }
-            catch { }
+            catch 
+            {
+                GameUpdateInfoTextBlock.Text = "Sorry. No info :(";
+            }
         }
 
         private void InstallBtn_Click(object sender, RoutedEventArgs e)
@@ -199,7 +204,7 @@ namespace RFUpdater
                     int i = 0;
                     while (i != 99)
                     {
-                        if (i == ATag)
+                        if (i == _Tag)
                         {
                             BinaryWriter.Write(NewGameVersion + "}" + GamePath);
                         }
@@ -253,7 +258,7 @@ namespace RFUpdater
             int i = 0;
             while (i != 99)
             {
-                if (i == ATag)
+                if (i == _Tag)
                 {
                     BinaryWriter.Write("" + "}" + "");
                 }

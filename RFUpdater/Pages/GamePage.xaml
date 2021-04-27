@@ -21,9 +21,7 @@
             </StackPanel>
             <StackPanel Visibility="Collapsed" Name="GameInfoStackPanel" Background="{DynamicResource {x:Static SystemColors.MenuHighlightBrushKey}}">
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="New version: 0.0.0.0" Name="NewVersionTextBlock" Style="{StaticResource GPTextBlockWhite}"/>
-                    <Separator Margin="5,0"/>
-                    <TextBlock Text="This version: 0.0.0.0" Name="ThisVersionTextBlock" Style="{StaticResource GPTextBlockWhite}"/>
+                    <TextBlock Text="This version: 0.0.0.0" Name="VersionTextBlock" Style="{StaticResource GPTextBlockWhite}"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="Status: Not installed" Name="StatusTextBlock" Style="{StaticResource GPTextBlockWhite}"/>
