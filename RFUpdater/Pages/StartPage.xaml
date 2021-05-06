@@ -12,7 +12,6 @@
         <ScrollViewer VerticalScrollBarVisibility="Hidden">
             <StackPanel Margin="5">
                 <TextBlock Text="Good day!" Style="{StaticResource GPTextBlockWhite}" Name="GDTextBlock"/>
-                <Image Source="https://drive.google.com/uc?id=1vm1sKGFaGSlJWCSaqyiMdR2z62FUTewn" Width="390" Height="300"/>
             </StackPanel>
         </ScrollViewer>
     </Grid>

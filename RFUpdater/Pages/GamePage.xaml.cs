@@ -121,19 +121,59 @@ namespace RFUpdater
             }
         }
 
-        private void InstallBtn_Click(object sender, RoutedEventArgs e)
+        private void Buttons_Click(object sender, RoutedEventArgs e)
         {
-            Install();
+            Button _Button = (Button)sender;
+            if((string)_Button.Tag == "Install")
+            {
+                Install();
+            }
+            else if ((string)_Button.Tag == "Delete")
+            {
+                if (FolderPathDirectory.Exists)
+                {
+                    FolderPathDirectory.Delete(true);
+                    DeleteGame();
+                }
+            }
+            else if ((string)_Button.Tag == "Like")
+            {
+                //like  
+                ThisUserLikeNum = 1;
+                LikeBtn.Content = "";
+                DisLikeBtn.Content = "";
+            }
+            else if ((string)_Button.Tag == "DisLike")
+            {
+                //dislike 
+                ThisUserLikeNum = 2;
+                LikeBtn.Content = "";
+                DisLikeBtn.Content = "";
+            }
+            else if ((string)_Button.Tag == "GameInfo")
+            {
+                if (GameInfoStackPanel.Visibility == Visibility.Collapsed)
+                {
+                    GameInfoStackPanel.Visibility = Visibility.Visible;
+                    GameInfoHideBtn.ToolTip = "Hide info";
+                }
+                else
+                {
+                    GameInfoStackPanel.Visibility = Visibility.Collapsed;
+                    GameInfoHideBtn.ToolTip = "Show info";
+                }
+            }
+
         }
 
         void Install()
         {
-            if (Properties.Settings.Default.GameStatus == 0)
+            if (GameStatus == -2)
             {
                 MessageBox.Show("Installing");
                 Installing();
             }
-            else if (Properties.Settings.Default.GameStatus == 1)
+            else if (GameStatus == 0)
             {
                 if (File.Exists(GamePath))
                 {
@@ -144,9 +184,10 @@ namespace RFUpdater
                     DeleteGame();
                 }
             }
-            else if (Properties.Settings.Default.GameStatus == 2)
+            else if (GameStatus == 1)
             {
-
+                MessageBox.Show("Updating");
+                Installing();
             }
         }
 
@@ -160,6 +201,11 @@ namespace RFUpdater
             }
             ZipPath = FolderPath + @"\RandomFights.zip";
             GamePath = FolderPath + @"\" + NewGameVersion + @"\RandomFights.exe";
+
+            if(File.Exists(ZipPath))
+            {
+                File.Delete(ZipPath);
+            }
 
             Uri UpdateUri = new Uri(GameUpdateUri);
             WebClient.DownloadFileCompleted += new AsyncCompletedEventHandler(Completed);
@@ -196,6 +242,11 @@ namespace RFUpdater
                     DeleteBtn.Visibility = Visibility.Visible;
                     ProgressBar0.Visibility = Visibility.Hidden;
                     DownSpeedTextBlock.Visibility = Visibility.Hidden;
+
+                    if(Directory.Exists(FolderPath))
+                    {
+                        Directory.Delete(FolderPath);
+                    }
 
                     ZipFile.ExtractToDirectory(ZipPath, FolderPath);
                     File.Delete(ZipPath);
@@ -234,19 +285,6 @@ namespace RFUpdater
             Properties.Settings.Default.Save();
         }
 
-
-        private void DeleteBtn_Click(object sender, RoutedEventArgs e)
-        {
-            if (FolderPathDirectory.Exists)
-            {
-                FolderPathDirectory.Delete(true);
-                DeleteGame();
-            }
-            else
-            {
-
-            }
-        }
         void DeleteGame()
         {
             Properties.Settings.Default.GameStatus = 0;
@@ -270,36 +308,6 @@ namespace RFUpdater
                 i++;
             }
             BinaryWriter.Dispose();
-        }
-
-        private void LikeBtn_Click(object sender, RoutedEventArgs e)
-        {
-            //like  
-            ThisUserLikeNum = 1;
-            LikeBtn.Content = "";
-            DisLikeBtn.Content = "";
-        }
-
-        private void DisLikeBtn_Click(object sender, RoutedEventArgs e)
-        {
-            //dislike 
-            ThisUserLikeNum = 2;
-            LikeBtn.Content = "";
-            DisLikeBtn.Content = "";
-        }
-        //
-        private void GameInfoHideBtn_Click(object sender, RoutedEventArgs e)
-        {
-            if (GameInfoStackPanel.Visibility == Visibility.Collapsed)
-            {
-                GameInfoStackPanel.Visibility = Visibility.Visible;
-                GameInfoHideBtn.ToolTip = "Hide info";
-            }
-            else
-            {
-                GameInfoStackPanel.Visibility = Visibility.Collapsed;
-                GameInfoHideBtn.ToolTip = "Show info";
-            }
         }
     }
 }

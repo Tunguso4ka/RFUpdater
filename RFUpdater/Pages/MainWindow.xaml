@@ -14,14 +14,14 @@
         MouseLeftButtonDown="Window_MouseLeftButtonDown"
         Title="MainWindow" Height="360" Width="400">
 
-    <Border BorderBrush="#503070" BorderThickness="3">
+    <Border BorderBrush="#7b2cbf" BorderThickness="3">
         <Grid>
-            <Grid Background="#0A060E" Name="FirstGrid">
+            <Grid Background="#10002b" Name="FirstGrid">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="25"/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
-                <Grid Grid.Row="1" Background="#1C1127" Name="SecondGrid">
+                <Grid Grid.Row="1" Background="#240046" Name="SecondGrid">
                     <Frame Name="Frame0" NavigationUIVisibility="Hidden" Margin="5"/>
                 </Grid>
             </Grid>
