@@ -28,7 +28,7 @@
     <TargetCulture>en</TargetCulture>
     <ProductName>RFU</ProductName>
     <PublisherName>Kira Kosova</PublisherName>
-    <ApplicationRevision>1</ApplicationRevision>
+    <ApplicationRevision>2</ApplicationRevision>
     <ApplicationVersion>0.1.6.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -72,7 +72,7 @@
     <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Resources\favicon %282%29.ico</ApplicationIcon>
+    <ApplicationIcon>Resources\rfuball_XtN_icon.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject>RFUpdater.App</StartupObject>
@@ -254,6 +254,12 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Starter\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rfuball_XtN_icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rfuball.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

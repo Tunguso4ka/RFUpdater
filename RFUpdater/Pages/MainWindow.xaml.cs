@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Diagnostics;
 using System.IO;
 using System.Net;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Windows;
 using Forms = System.Windows.Forms;
 using System.Windows.Input;
@@ -232,15 +228,62 @@ namespace RFUpdater
 
         private void CreateNotifyIcon()
         {
+
             notifyIcon = new Forms.NotifyIcon(new Container());
-            Forms.ContextMenu context_menu = new Forms.ContextMenu();
+            ///*
+            Forms.ContextMenuStrip _ContextMenuStrip = new Forms.ContextMenuStrip();
 
-            context_menu.MenuItems.AddRange(new Forms.MenuItem[] {new Forms.MenuItem("Main page", new EventHandler(StartPageClicked)),new Forms.MenuItem("Library", new EventHandler(LibraryPageClicked)), new Forms.MenuItem("Search", new EventHandler(SearchPageClicked)), new Forms.MenuItem("Settings", new EventHandler(SettingsPageClicked)), new Forms.MenuItem("Close", new EventHandler(ExitClicked)) });
+            Forms.ToolStripMenuItem _StripMenuItemAppName = new Forms.ToolStripMenuItem();
 
-            notifyIcon.Icon = Properties.Resources.RFUicon;
-            notifyIcon.ContextMenu = context_menu;
-            notifyIcon.Text = "RFU";
+            _ContextMenuStrip.Items.AddRange(
+                new Forms.ToolStripMenuItem[]
+                {
+                    _StripMenuItemAppName,
+                    new Forms.ToolStripMenuItem("Main page", null, new EventHandler(StartPageClicked)),
+                    new Forms.ToolStripMenuItem("Game library", null, new EventHandler(LibraryPageClicked)),
+                    new Forms.ToolStripMenuItem("Exit", null, new EventHandler(ExitClicked))
+                }
+            );
+
+            _StripMenuItemAppName.Text = "RFUpdater";
+            _StripMenuItemAppName.Enabled = false;
+            _StripMenuItemAppName.Image = Properties.Resources.rfuball;
+
+            notifyIcon.Icon = Properties.Resources.rfuball_XtN_icon;
+            notifyIcon.ContextMenuStrip = _ContextMenuStrip;
+            notifyIcon.Text = "RFUpdater";
             notifyIcon.Visible = true;
+            //*/
+            
+            /*
+            Forms.ContextMenu _ContextMenu = new Forms.ContextMenu();
+
+            Forms.MenuItem _MenuItemAppName = new Forms.MenuItem();
+
+            _ContextMenu.MenuItems.AddRange(
+                new Forms.MenuItem[]
+                {
+                    _MenuItemAppName,
+                    new Forms.MenuItem("-"),
+                    new Forms.MenuItem("Main page", new EventHandler(StartPageClicked)),
+                    new Forms.MenuItem("Game library", new EventHandler(LibraryPageClicked)),
+                    new Forms.MenuItem("-"),
+                    new Forms.MenuItem("Exit", new EventHandler(ExitClicked))
+                }
+            );
+
+            _MenuItemAppName.Text = "RFUpdater";
+            _MenuItemAppName.Enabled = false;
+
+            notifyIcon.Icon = Properties.Resources.rfuball_XtN_icon;
+            notifyIcon.ContextMenu = _ContextMenu;
+            notifyIcon.Text = "RFUpdater";
+            notifyIcon.Visible = true;
+
+            */
+
+            notifyIcon.MouseDown += new Forms.MouseEventHandler(NotifyIconClicked);
+            
         }
 
         /* 
@@ -252,6 +295,15 @@ namespace RFUpdater
          */
 
         [STAThread]
+        private void NotifyIconClicked(object sender, Forms.MouseEventArgs e)
+        {
+            if (e.Button == Forms.MouseButtons.Left)
+            {
+                Frame0.Content = AStartPage;
+                this.WindowState = WindowState.Normal;
+                this.ShowInTaskbar = true;
+            }
+        }
         private void StartPageClicked(object sender, EventArgs e)
         {
             Frame0.Content = AStartPage;
@@ -261,18 +313,6 @@ namespace RFUpdater
         private void LibraryPageClicked(object sender, EventArgs e)
         {
             Frame0.Content = ALibraryPage;
-            this.WindowState = WindowState.Normal;
-            this.ShowInTaskbar = true;
-        }
-        private void SearchPageClicked(object sender, EventArgs e)
-        {
-            Frame0.Content = ASearchPage;
-            this.WindowState = WindowState.Normal;
-            this.ShowInTaskbar = true;
-        }
-        private void SettingsPageClicked(object sender, EventArgs e)
-        {
-            Frame0.Content = ASettingsPage;
             this.WindowState = WindowState.Normal;
             this.ShowInTaskbar = true;
         }
