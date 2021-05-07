@@ -73,7 +73,6 @@ namespace RFUpdater
 
             FolderPath = Properties.Settings.Default.SaveFolderPath + GameName;
             FolderPath = FolderPath.Replace(' ', '_');
-            FolderPathDirectory = new DirectoryInfo(FolderPath);
             ProgressBar0.Visibility = Visibility.Hidden;
             DownSpeedTextBlock.Visibility = Visibility.Hidden;
 
@@ -108,7 +107,7 @@ namespace RFUpdater
         {
             try
             {
-                string WhatsNewPath = FolderPath + @"\" + ThisGameVersion + @"\WhatsNew.txt";
+                string WhatsNewPath = FolderPath + @"\WhatsNew.txt";
                 if (GameStatus != 0 && File.Exists(WhatsNewPath))
                 {
                     StreamReader _StreamReader = new StreamReader(WhatsNewPath);
@@ -124,17 +123,39 @@ namespace RFUpdater
         private void Buttons_Click(object sender, RoutedEventArgs e)
         {
             Button _Button = (Button)sender;
-            if((string)_Button.Tag == "Install")
+            //MessageBox.Show((string)_Button.Tag);
+            if ((string)_Button.Tag == "Install")
             {
-                Install();
+                //Game Status check
+                if (GameStatus == -2)
+                {
+                    MessageBox.Show("Installing");
+                    Installing();
+                }
+                else if (GameStatus == 0)
+                {
+                    if (File.Exists(GamePath))
+                    {
+                        Process.Start(GamePath);
+                    }
+                    else
+                    {
+                        DeleteGame();
+                    }
+                }
+                else if (GameStatus == 1)
+                {
+                    MessageBox.Show("Updating");
+                    Installing();
+                }
             }
             else if ((string)_Button.Tag == "Delete")
             {
-                if (FolderPathDirectory.Exists)
+                if (Directory.Exists(FolderPath))
                 {
-                    FolderPathDirectory.Delete(true);
-                    DeleteGame();
+                    Directory.Delete(FolderPath, true);
                 }
+                DeleteGame();
             }
             else if ((string)_Button.Tag == "Like")
             {
@@ -166,45 +187,32 @@ namespace RFUpdater
 
         }
 
-        void Install()
-        {
-            if (GameStatus == -2)
-            {
-                MessageBox.Show("Installing");
-                Installing();
-            }
-            else if (GameStatus == 0)
-            {
-                if (File.Exists(GamePath))
-                {
-                    Process.Start(GamePath);
-                }
-                else
-                {
-                    DeleteGame();
-                }
-            }
-            else if (GameStatus == 1)
-            {
-                MessageBox.Show("Updating");
-                Installing();
-            }
-        }
-
         void Installing()
         {
             Properties.Settings.Default.Installing = true;
             WebClient WebClient = new WebClient();
-            if (!FolderPathDirectory.Exists)
+
+            if (Directory.Exists(FolderPath))
             {
-                FolderPathDirectory.Create();
+                Directory.Delete(FolderPath, true);
+                Directory.CreateDirectory(FolderPath);
             }
+            else
+            {
+                Directory.CreateDirectory(FolderPath);
+            }
+
             ZipPath = FolderPath + @"\RandomFights.zip";
-            GamePath = FolderPath + @"\" + NewGameVersion + @"\RandomFights.exe";
+            GamePath = FolderPath + @"\RandomFights.exe";
 
             if(File.Exists(ZipPath))
             {
                 File.Delete(ZipPath);
+            }
+
+            if (File.Exists(GamePath))
+            {
+                File.Delete(GamePath);
             }
 
             Uri UpdateUri = new Uri(GameUpdateUri);
@@ -212,7 +220,7 @@ namespace RFUpdater
             WebClient.DownloadProgressChanged += new DownloadProgressChangedEventHandler(ProgressChanged);
             WebClient.DownloadFileAsync(UpdateUri, ZipPath);
 
-            InstallBtn.Visibility = Visibility.Hidden;
+            InstallBtn.IsEnabled = false;
             ProgressBar0.Visibility = Visibility.Visible;
             DownSpeedTextBlock.Visibility = Visibility.Visible;
         }
@@ -234,19 +242,9 @@ namespace RFUpdater
                 try
                 {
                     MessageBox.Show("Complete");
-
-                    Properties.Settings.Default.GameStatus = 1;
+                    GameStatus = 0;
                     StatusTextBlock.Text = "Status: Installed.";
                     InstallBtn.Content = "🎮Play";
-                    InstallBtn.Visibility = Visibility.Visible;
-                    DeleteBtn.Visibility = Visibility.Visible;
-                    ProgressBar0.Visibility = Visibility.Hidden;
-                    DownSpeedTextBlock.Visibility = Visibility.Hidden;
-
-                    if(Directory.Exists(FolderPath))
-                    {
-                        Directory.Delete(FolderPath);
-                    }
 
                     ZipFile.ExtractToDirectory(ZipPath, FolderPath);
                     File.Delete(ZipPath);
@@ -281,13 +279,18 @@ namespace RFUpdater
                     MessageBox.Show("Error: Can't download this app, try later.", "Error");
                 }
             }
+            InstallBtn.IsEnabled = true;
+            DeleteBtn.Visibility = Visibility.Visible;
+            ProgressBar0.Visibility = Visibility.Hidden;
+            DownSpeedTextBlock.Visibility = Visibility.Hidden;
+
             Properties.Settings.Default.Installing = false;
             Properties.Settings.Default.Save();
         }
 
         void DeleteGame()
         {
-            Properties.Settings.Default.GameStatus = 0;
+            GameStatus = -2;
             StatusTextBlock.Text = "Status: Not installed.";
             InstallBtn.Content = "⬇💾Install";
             DeleteBtn.Visibility = Visibility.Hidden;

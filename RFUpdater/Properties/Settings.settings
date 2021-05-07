@@ -17,9 +17,6 @@
     <Setting Name="SaveFolderPath" Type="System.String" Scope="User">
       <Value Profile="(Default)">C:\Games\</Value>
     </Setting>
-    <Setting Name="GameStatus" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">0</Value>
-    </Setting>
     <Setting Name="IsBetaOn" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
