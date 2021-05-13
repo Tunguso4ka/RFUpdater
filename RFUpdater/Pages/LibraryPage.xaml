@@ -14,10 +14,12 @@
                 <DataTemplate>
                     <Button Style="{StaticResource ButtonStyleWhiteWithBackground}" Height="Auto" Width="Auto" Margin="5" Click="AGameBtn_Click" Tag="{Binding BtnTag}">
                         <Grid>
-                            <ProgressBar IsIndeterminate="True" Height="10" Width="50"/>
-                            <StackPanel Margin="0">
-                                <Image Height="70" Width="70" Margin="5,5,5,0" Name="RFImage" Source="{Binding AGameSource}"/>
-                                <TextBlock Text="{Binding AGameName}" Foreground="White" Margin="5,0,5,5" Name="RFTextBox" FontFamily="{DynamicResource IBMPlexLight}"/>
+                            <StackPanel Margin="5">
+                                <Grid>
+                                    <Image Height="70" Width="70" Name="RFImage" Source="{Binding IconSource}"/>
+                                    <TextBlock Text="{Binding GameReleaseStatus}" Foreground="#9d4edd" FontSize="16" Margin="0,0"/>
+                                </Grid>
+                                <TextBlock Text="{Binding AGameName}" Foreground="White" Name="RFTextBox" FontFamily="{DynamicResource IBMPlexLight}"/>
                             </StackPanel>
                         </Grid>
                     </Button>

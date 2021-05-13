@@ -28,7 +28,7 @@
     <TargetCulture>en</TargetCulture>
     <ProductName>RFU</ProductName>
     <PublisherName>Kira Kosova</PublisherName>
-    <ApplicationRevision>4</ApplicationRevision>
+    <ApplicationRevision>5</ApplicationRevision>
     <ApplicationVersion>0.1.6.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>

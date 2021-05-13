@@ -25,6 +25,11 @@ namespace RFUpdater
         int GameStatus;
         int _Tag;
         int ThisUserLikeNum = 0;
+        bool GameIsComingSoon;
+
+        ProgressBar _ProgressBar;
+        TextBlock _ProgressTextBox;
+
         DirectoryInfo FolderPathDirectory;
 
         public GamePage(LibraryPage _LibraryPage)
@@ -43,6 +48,21 @@ namespace RFUpdater
             _Tag = _LibraryPage._Tag;
 
             //MessageBox.Show(NewGameVersion + "", "0");
+
+            if (_LibraryPage.AGameReleaseStatus == 0)
+            {
+                GameReleaseStatusTextBlock.Text = "⏳\nComing soon...";
+                InstallBtn.IsEnabled = false;
+                GameIsComingSoon = true;
+            }
+            else if (_LibraryPage.AGameReleaseStatus == 1)
+            {
+                GameReleaseStatusTextBlock.Text = "β";
+            }
+            else
+            {
+                GameReleaseStatusTextBlock.Text = "";
+            }
 
             if (ThisGameVersion == new Version("0.0"))
             {
@@ -65,7 +85,9 @@ namespace RFUpdater
             }
 
             //новая и текущая версия вносятся в текстблоки
-            VersionTextBlock.Text = "This version: " + ThisGameVersion;
+            if (GameIsComingSoon == false) {
+                VersionTextBlock.Text = "This version: " + ThisGameVersion;
+            }
             if (!NewGameVersion.Equals(ThisGameVersion))
             {
                 VersionTextBlock.Text += " New version: " + NewGameVersion;
@@ -189,6 +211,9 @@ namespace RFUpdater
 
         void Installing()
         {
+            _ProgressBar = ((MainWindow)Window.GetWindow(this)).MainProgressBar;
+            _ProgressTextBox = ((MainWindow)Window.GetWindow(this)).ProgressTextBlock;
+
             Properties.Settings.Default.Installing = true;
             WebClient WebClient = new WebClient();
 
@@ -221,13 +246,17 @@ namespace RFUpdater
             WebClient.DownloadFileAsync(UpdateUri, ZipPath);
 
             InstallBtn.IsEnabled = false;
-            ProgressBar0.Visibility = Visibility.Visible;
+            //ProgressBar0.Visibility = Visibility.Visible;
+            _ProgressBar.Visibility = Visibility.Visible;
+            _ProgressTextBox.Visibility = Visibility.Visible;
             DownSpeedTextBlock.Visibility = Visibility.Visible;
         }
 
         private void ProgressChanged(object sender, DownloadProgressChangedEventArgs e)
         {
-            ProgressBar0.Value = e.ProgressPercentage;
+            //ProgressBar0.Value = e.ProgressPercentage;
+            _ProgressBar.Value = e.ProgressPercentage;
+            _ProgressTextBox.Text = e.ProgressPercentage + "%";
             DownSpeedTextBlock.Text = "Bytes received: " + e.BytesReceived;
         }
 
@@ -281,8 +310,10 @@ namespace RFUpdater
             }
             InstallBtn.IsEnabled = true;
             DeleteBtn.Visibility = Visibility.Visible;
-            ProgressBar0.Visibility = Visibility.Hidden;
-            DownSpeedTextBlock.Visibility = Visibility.Hidden;
+            //ProgressBar0.Visibility = Visibility.Hidden;
+            _ProgressBar.Visibility = Visibility.Collapsed;
+            _ProgressTextBox.Visibility = Visibility.Collapsed;
+            DownSpeedTextBlock.Visibility = Visibility.Collapsed;
 
             Properties.Settings.Default.Installing = false;
             Properties.Settings.Default.Save();

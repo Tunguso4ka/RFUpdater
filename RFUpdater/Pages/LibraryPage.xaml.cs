@@ -18,6 +18,7 @@ namespace RFUpdater
         string GameListFilePath;
         string[] GamesNamesList = new string[99];
         string[] GamesPathesList = new string[99];
+        int[] GamesReleaseStatusList = new int[99];
 
         public int _Tag;
         public Version newGameVersion;
@@ -26,6 +27,7 @@ namespace RFUpdater
         public string GameInfoPath;
         public string gamePath;
         public string GameName;
+        public int AGameReleaseStatus;
 
         public GamePage RandomFightsPage;
         Uri ImageSourceUri = new Uri("https://drive.google.com/uc?id=1pbvzQhhskJR8Vi-y-rC9AJ4iI1uylJ5g", UriKind.RelativeOrAbsolute); //RFU logo - https://drive.google.com/uc?id=1vm1sKGFaGSlJWCSaqyiMdR2z62FUTewn https://drive.google.com/file/d/1vm1sKGFaGSlJWCSaqyiMdR2z62FUTewn/view?usp=sharing gamelist - https://drive.google.com/uc?id=1QzOoLrQKW48salKmltEPDAis2Rd_GFz9 https://drive.google.com/uc?id=1Ia1E7q7Hpz-zihtBMxI8jDgGk5tXEk-X
@@ -77,12 +79,29 @@ namespace RFUpdater
                     int LineNum = 0;
                     string[] LineList;
                     string line;
+                    string _GameReleaseStatus;
                     while ((line = await StreamReader.ReadLineAsync()) != null)
                     {
                         LineList = line.Split('}');
                         GamesNamesList[LineNum] = LineList[0];
                         GamesPathesList[LineNum] = LineList[2];
-                        ListWithGameData.Add(new GameData() { AGameName = LineList[0], AGameSource = new Uri(LineList[1], UriKind.RelativeOrAbsolute), BtnTag = Convert.ToString(LineNum) });
+                        //β
+                        if (LineList[3] == "0")
+                        {
+                            _GameReleaseStatus = "⏳";
+                            GamesReleaseStatusList[LineNum] = 0;
+                        }
+                        else if (LineList[3] == "1")
+                        {
+                            _GameReleaseStatus = "β";
+                            GamesReleaseStatusList[LineNum] = 1;
+                        }   
+                        else
+                        {
+                            _GameReleaseStatus = "";
+                            GamesReleaseStatusList[LineNum] = 2;
+                        }
+                        ListWithGameData.Add(new GameData() { AGameName = LineList[0], IconSource = new Uri(LineList[1], UriKind.RelativeOrAbsolute), BtnTag = Convert.ToString(LineNum), GameReleaseStatus = _GameReleaseStatus });
                         LineNum++;
                     }
                     StreamReader.Dispose();
@@ -113,20 +132,26 @@ namespace RFUpdater
             {
                 thisGameVersion = new Version("0.0");
                 gamePath = "";
-                MessageBox.Show("Error: cant get saved games path or/and saved games versions");
             }
 
-            webClient.DownloadFile(new Uri(GamesPathesList[_Tag], UriKind.RelativeOrAbsolute), GameInfoPath);
-
-            using (StreamReader StreamReader = new StreamReader(GameInfoPath))
+            if(GamesReleaseStatusList[_Tag] != 0)
             {
-                newGameVersion = new Version(StreamReader.ReadLine());
-                GameUpdateUrl = StreamReader.ReadLine();
-                StreamReader.Dispose();
+                webClient.DownloadFile(new Uri(GamesPathesList[_Tag], UriKind.RelativeOrAbsolute), GameInfoPath);
 
-                //MessageBox.Show(" 1: " + newGameVersion, GameUpdateUrl);
+                using (StreamReader StreamReader = new StreamReader(GameInfoPath))
+                {
+                    newGameVersion = new Version(StreamReader.ReadLine());
+                    GameUpdateUrl = StreamReader.ReadLine();
+                    StreamReader.Dispose();
+
+                    //MessageBox.Show(" 1: " + newGameVersion, GameUpdateUrl);
+                }
+                File.Delete(GameInfoPath);
             }
-            File.Delete(GameInfoPath);
+            else
+            {
+                newGameVersion = new Version("0.0");
+            }
 
             if (Properties.Settings.Default.SavedGamesIsReal == false)
             {
@@ -136,6 +161,8 @@ namespace RFUpdater
             }
 
             GameName = GamesNamesList[_Tag];
+
+            AGameReleaseStatus = GamesReleaseStatusList[_Tag];
 
             //https://filetransfer.io/data-package/hayIzLuP/download GamesPathesList[Tag]
             //MessageBox.Show("" + Tag);
@@ -150,7 +177,8 @@ namespace RFUpdater
     public class GameData
     {
         public string AGameName { get; set; }
-        public Uri AGameSource { get; set; }
+        public Uri IconSource { get; set; }
         public string BtnTag { get; set; }
+        public string GameReleaseStatus { get; set; }
     }
 }

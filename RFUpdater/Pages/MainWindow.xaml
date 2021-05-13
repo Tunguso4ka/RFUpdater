@@ -38,6 +38,9 @@
                 <Button Content="" x:Name="MinimBtn" Click="MinimBtn_Click" Style="{StaticResource ButtonStyleWhite}" FontFamily="Segoe MDL2 Assets" ToolTipService.ToolTip="Minimize"/>
                 <Button Content="" x:Name="CloseBtn" Click="CloseBtn_Click" Style="{StaticResource ButtonStyleWhite}" FontFamily="Segoe MDL2 Assets" ToolTipService.ToolTip="Close"/>
             </StackPanel>
+
+            <ProgressBar HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Background="Transparent" Foreground="#9d4edd" Height="15" BorderBrush="#7b2cbf" Visibility="Collapsed" Name="MainProgressBar"/>
+            <TextBlock Style="{StaticResource GPTextBlockWhite}" Text="0%" HorizontalAlignment="Center" VerticalAlignment="Bottom" Visibility="Collapsed" Name="ProgressTextBlock"/>
         </Grid>
     </Border>
 </Window>
