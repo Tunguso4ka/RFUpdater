@@ -12,7 +12,7 @@
         Background="Transparent"
         WindowStartupLocation="CenterScreen"
         MouseLeftButtonDown="Window_MouseLeftButtonDown"
-        Title="MainWindow" Height="360" Width="400">
+        Title="RFUpdater" Height="360" Width="400">
 
     <Border BorderBrush="#7b2cbf" BorderThickness="3">
         <Grid>

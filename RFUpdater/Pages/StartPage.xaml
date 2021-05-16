@@ -12,6 +12,7 @@
         <ScrollViewer VerticalScrollBarVisibility="Hidden">
             <StackPanel Margin="5">
                 <TextBlock Text="Good day!" Style="{StaticResource GPTextBlockWhite}" Name="GDTextBlock"/>
+                <Image Source="/Resources/rfulogo0516.png" />
             </StackPanel>
         </ScrollViewer>
     </Grid>

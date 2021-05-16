@@ -247,9 +247,9 @@ namespace RFUpdater
 
             _StripMenuItemAppName.Text = "RFUpdater";
             _StripMenuItemAppName.Enabled = false;
-            _StripMenuItemAppName.Image = Properties.Resources.rfuball;
+            _StripMenuItemAppName.Image = Properties.Resources.rfulogo0516;
 
-            notifyIcon.Icon = Properties.Resources.rfuball_XtN_icon;
+            notifyIcon.Icon = Properties.Resources.rfulogo0516ico;
             notifyIcon.ContextMenuStrip = _ContextMenuStrip;
             notifyIcon.Text = "RFUpdater";
             notifyIcon.Visible = true;

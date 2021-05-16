@@ -61,11 +61,21 @@ namespace RFUpdater.Properties {
         }
         
         /// <summary>
+        ///   Vyhledává lokalizovaný prostředek typu System.Drawing.Icon podobný (Ikona).
+        /// </summary>
+        internal static System.Drawing.Icon RFUicon {
+            get {
+                object obj = ResourceManager.GetObject("RFUicon", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Vyhledává lokalizovaný prostředek typu System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap rfuball {
+        internal static System.Drawing.Bitmap rfulogo0516 {
             get {
-                object obj = ResourceManager.GetObject("rfuball", resourceCulture);
+                object obj = ResourceManager.GetObject("rfulogo0516", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -73,19 +83,9 @@ namespace RFUpdater.Properties {
         /// <summary>
         ///   Vyhledává lokalizovaný prostředek typu System.Drawing.Icon podobný (Ikona).
         /// </summary>
-        internal static System.Drawing.Icon rfuball_XtN_icon {
+        internal static System.Drawing.Icon rfulogo0516ico {
             get {
-                object obj = ResourceManager.GetObject("rfuball_XtN_icon", resourceCulture);
-                return ((System.Drawing.Icon)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Vyhledává lokalizovaný prostředek typu System.Drawing.Icon podobný (Ikona).
-        /// </summary>
-        internal static System.Drawing.Icon RFUicon {
-            get {
-                object obj = ResourceManager.GetObject("RFUicon", resourceCulture);
+                object obj = ResourceManager.GetObject("rfulogo0516ico", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
             }
         }

@@ -9,15 +9,19 @@
         ResizeMode="NoResize"
         mc:Ignorable="d"
         MouseLeftButtonDown="Window_MouseLeftButtonDown"
-        Title="AboutWindow" Height="200" Width="300">
-    <Grid Background="#FF0A3246">
-        <StackPanel VerticalAlignment="Bottom">
+        Title="About RFUpdater" Height="200" Width="300">
+    <Border BorderBrush="#7b2cbf" BorderThickness="3">
+        <Grid Background="#10002b">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="25"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                 <TextBlock Style="{StaticResource GPTextBlockWhite}" Text="RFU" VerticalAlignment="Center" FontSize="24" Name="AppNameTextBlock"/>
                 <TextBlock Style="{StaticResource GPTextBlockWhite}" Text="by Kira Kosova" VerticalAlignment="Center" FontSize="8"/>
             </StackPanel>
-            <TextBox Name="AboutTextBox" Height="150" Foreground="White" Background="Transparent" IsReadOnly="True" BorderBrush="Transparent"/>
-        </StackPanel>
-        <Button Content="" x:Name="CloseBtn" Click="CloseBtn_Click" Style="{StaticResource ButtonStyleWhite}" FontFamily="Segoe MDL2 Assets" ToolTipService.ToolTip="Close" VerticalAlignment="Top" HorizontalAlignment="Right"/>
-    </Grid>
+            <Button Content="" x:Name="CloseBtn" Click="CloseBtn_Click" Style="{StaticResource ButtonStyleWhite}" FontFamily="Segoe MDL2 Assets" ToolTipService.ToolTip="Close" VerticalAlignment="Top" HorizontalAlignment="Right"/>
+            <TextBox Name="AboutTextBox" Foreground="White" Background="#240046" IsReadOnly="True" BorderBrush="Transparent" Grid.Row="1"/>
+        </Grid>
+    </Border>
 </Window>

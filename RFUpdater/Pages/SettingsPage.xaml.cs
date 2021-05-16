@@ -132,6 +132,7 @@ namespace RFUpdater
 
         private void AboutBtn_Click(object sender, RoutedEventArgs e)
         {
+            AboutWindow.ShowInTaskbar = false;
             AboutWindow.Show();
         }
     }
