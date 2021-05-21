@@ -17,7 +17,7 @@
                             <StackPanel Margin="5">
                                 <Grid>
                                     <Image Height="70" Width="70" Name="RFImage" Source="{Binding IconSource}"/>
-                                    <TextBlock Text="{Binding GameReleaseStatus}" Foreground="#9d4edd" FontSize="16" Margin="0,0"/>
+                                    <TextBlock Name="ReleaseStatusTextBlock" Text="{Binding GameReleaseStatus}" Foreground="{Binding ReleaseStatusTextBlockBrush}" FontSize="16" Margin="0,0"/>
                                 </Grid>
                                 <TextBlock Text="{Binding AGameName}" Foreground="White" Name="RFTextBox" FontFamily="{DynamicResource IBMPlexLight}"/>
                             </StackPanel>

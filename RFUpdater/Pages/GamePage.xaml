@@ -10,17 +10,17 @@
 
     <StackPanel>
         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal">
-            <TextBlock Text="A" Foreground="#9d4edd" FontSize="16" VerticalAlignment="Center" Margin="5,0" Name="GameReleaseStatusTextBlock"/>
+            <TextBlock Text="A" Name="GameReleaseStatusTextBlock" Foreground="#9d4edd" FontSize="16" VerticalAlignment="Center" Margin="5,0"/>
             <TextBlock Text="GameName" Name="GameNameTextBlock" FontSize="36" Style="{StaticResource GPTextBlockWhite}" FontFamily="/RFUpdater;component/Materials/#IBM Plex Sans Light" Background="{DynamicResource {x:Static SystemColors.MenuHighlightBrushKey}}"/>
         </StackPanel>
         <StackPanel>
             <StackPanel Orientation="Horizontal">
-                <Button Content="Install" Name="InstallBtn" Style="{StaticResource ButtonStyleWhite}" Click="Buttons_Click" Width="100" ToolTip="Install" Height="30" FontSize="16" Tag="Install"/>
-                <Button Content="" Name="DeleteBtn" Style="{StaticResource ButtonStyleWhite}" FontFamily="Segoe MDL2 Assets" Click="Buttons_Click" Width="30" ToolTip="Delete" Height="30" FontSize="16" Tag="Delete"/>
+                <Button Content="Install" Name="InstallBtn" Style="{StaticResource ButtonStylePink}" Click="Buttons_Click" Width="100" ToolTip="Install" Height="30" FontSize="16" Tag="Install"/>
+                <Button Content="" Name="DeleteBtn" Style="{StaticResource ButtonStylePink}" FontFamily="Segoe MDL2 Assets" Click="Buttons_Click" Width="30" ToolTip="Delete" Height="30" FontSize="16" Tag="Delete"/>
                 <Separator Margin="5,0"/>
-                <Button Content="" Name="LikeBtn" Style="{StaticResource ButtonStyleWhite}" FontFamily="Segoe MDL2 Assets" Click="Buttons_Click" Width="30" ToolTip="Like game" Height="30" FontSize="16" Tag="Like"/>
-                <Button Content="" Name="DisLikeBtn" Style="{StaticResource ButtonStyleWhite}" FontFamily="Segoe MDL2 Assets" Click="Buttons_Click" Width="30" ToolTip="Dislike game" Height="30" FontSize="16" Tag="DisLike"/>
-                <Button x:Name="GameInfoHideBtn" Content="" Style="{StaticResource ButtonStyleWhite}" Width="30" FontFamily="Segoe MDL2 Assets" Click="Buttons_Click" ToolTip="Show info" Height="30" FontSize="16" Tag="GameInfo"/>
+                <Button Content="" Name="LikeBtn" Style="{StaticResource ButtonStylePink}" FontFamily="Segoe MDL2 Assets" Click="Buttons_Click" Width="30" ToolTip="Like game" Height="30" FontSize="16" Tag="Like"/>
+                <Button Content="" Name="DisLikeBtn" Style="{StaticResource ButtonStylePink}" FontFamily="Segoe MDL2 Assets" Click="Buttons_Click" Width="30" ToolTip="Dislike game" Height="30" FontSize="16" Tag="DisLike"/>
+                <Button x:Name="GameInfoHideBtn" Content="" Style="{StaticResource ButtonStylePink}" Width="30" FontFamily="Segoe MDL2 Assets" Click="Buttons_Click" ToolTip="Show info" Height="30" FontSize="16" Tag="GameInfo"/>
             </StackPanel>
             <StackPanel Visibility="Collapsed" Name="GameInfoStackPanel" Background="{DynamicResource {x:Static SystemColors.MenuHighlightBrushKey}}">
                 <StackPanel Orientation="Horizontal">

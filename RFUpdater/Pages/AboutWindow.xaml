@@ -20,7 +20,7 @@
                 <TextBlock Style="{StaticResource GPTextBlockWhite}" Text="RFU" VerticalAlignment="Center" FontSize="24" Name="AppNameTextBlock"/>
                 <TextBlock Style="{StaticResource GPTextBlockWhite}" Text="by Kira Kosova" VerticalAlignment="Center" FontSize="8"/>
             </StackPanel>
-            <Button Content="" x:Name="CloseBtn" Click="CloseBtn_Click" Style="{StaticResource ButtonStyleWhite}" FontFamily="Segoe MDL2 Assets" ToolTipService.ToolTip="Close" VerticalAlignment="Top" HorizontalAlignment="Right"/>
+            <Button Content="" x:Name="CloseBtn" Click="CloseBtn_Click" Style="{StaticResource ButtonStylePink}" FontFamily="Segoe MDL2 Assets" ToolTipService.ToolTip="Close" VerticalAlignment="Top" HorizontalAlignment="Right"/>
             <TextBox Name="AboutTextBox" Foreground="White" Background="#240046" IsReadOnly="True" BorderBrush="Transparent" Grid.Row="1"/>
         </Grid>
     </Border>

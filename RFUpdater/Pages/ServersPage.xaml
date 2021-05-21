@@ -23,6 +23,6 @@
                 </StackPanel>
             </StackPanel>
         </ScrollViewer>
-        <Button Content="Save and restart app" x:Name="SaveBtn" Click="SaveBtn_Click" Style="{StaticResource ButtonStyleWhite}" VerticalAlignment="Bottom"/>
+        <Button Content="Save and restart app" x:Name="SaveBtn" Click="SaveBtn_Click" Style="{StaticResource ButtonStylePink}" VerticalAlignment="Bottom"/>
     </Grid>
 </Page>

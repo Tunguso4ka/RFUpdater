@@ -4,6 +4,7 @@ using System.IO;
 using System.Net;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace RFUpdater
 {
@@ -35,6 +36,11 @@ namespace RFUpdater
         {
             InitializeComponent();
             GetGameListTxt();
+        }
+
+        void ChangeTheme()
+        {
+            
         }
 
         void GetGameListTxt()
@@ -80,6 +86,7 @@ namespace RFUpdater
                     string[] LineList;
                     string line;
                     string _GameReleaseStatus;
+                    Brush _Brush;
                     while ((line = await StreamReader.ReadLineAsync()) != null)
                     {
                         LineList = line.Split('}');
@@ -101,7 +108,17 @@ namespace RFUpdater
                             _GameReleaseStatus = "";
                             GamesReleaseStatusList[LineNum] = 2;
                         }
-                        ListWithGameData.Add(new GameData() { AGameName = LineList[0], IconSource = new Uri(LineList[1], UriKind.RelativeOrAbsolute), BtnTag = Convert.ToString(LineNum), GameReleaseStatus = _GameReleaseStatus });
+
+                        if (Properties.Settings.Default.ThemeNum == 0)
+                        {
+                            _Brush = new SolidColorBrush(Color.FromRgb(97, 214, 200));
+                        }
+                        else
+                        {
+                            _Brush = new SolidColorBrush(Color.FromRgb(157, 78, 221));
+                        }
+
+                        ListWithGameData.Add(new GameData() { AGameName = LineList[0], IconSource = new Uri(LineList[1], UriKind.RelativeOrAbsolute), BtnTag = Convert.ToString(LineNum), GameReleaseStatus = _GameReleaseStatus, ReleaseStatusTextBlockBrush = _Brush });
                         LineNum++;
                     }
                     StreamReader.Dispose();
@@ -112,6 +129,7 @@ namespace RFUpdater
             catch
             {
                 MessageBox.Show("Error: check your internet connection. ", "Error");
+                AddTestGame();
             }
         }
 
@@ -172,6 +190,24 @@ namespace RFUpdater
             ((MainWindow)Window.GetWindow(this)).Frame0.Content = RandomFightsPage;
 
         }
+
+        void AddTestGame()
+        {
+            int LineNum = 0;
+            Brush _Brush;
+
+            if (Properties.Settings.Default.ThemeNum == 0)
+            {
+                _Brush = new SolidColorBrush(Color.FromRgb(97, 214, 200));
+            }
+            else
+            {
+                _Brush = new SolidColorBrush(Color.FromRgb(157, 78, 221));
+            }
+
+            ListWithGameData.Add(new GameData() { AGameName = "Test game", IconSource = new Uri("https://drive.google.com/uc?id=1NkVH1Zf7WpGQrpI4r5nBz0ZHqsC97BVX", UriKind.RelativeOrAbsolute), BtnTag = Convert.ToString(LineNum), GameReleaseStatus = "T", ReleaseStatusTextBlockBrush = _Brush });
+            GameItemsControl.ItemsSource = ListWithGameData;
+        }
     }
 
     public class GameData
@@ -180,5 +216,6 @@ namespace RFUpdater
         public Uri IconSource { get; set; }
         public string BtnTag { get; set; }
         public string GameReleaseStatus { get; set; }
+        public Brush ReleaseStatusTextBlockBrush { get; set; }
     }
 }

@@ -17,6 +17,17 @@ namespace RFUpdater
         {
             InitializeComponent();
             CheckAndSet();
+            ChangeTheme();
+        }
+
+        void ChangeTheme()
+        {
+            if(Properties.Settings.Default.ThemeNum == 0)
+            {
+                LogOutBtn.Style = (Style)FindResource("ButtonStyleGreen");
+                AboutBtn.Style = (Style)FindResource("ButtonStyleGreen");
+                SaveBtn.Style = (Style)FindResource("ButtonStyleGreen");
+            }
         }
 
         void CheckAndSet()

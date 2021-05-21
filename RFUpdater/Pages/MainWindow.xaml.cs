@@ -163,8 +163,17 @@ namespace RFUpdater
         {
             if (Properties.Settings.Default.ThemeNum == 0)
             {
-                FirstGrid.Background = new SolidColorBrush(Color.FromRgb(6, 90, 130));
-                SecondGrid.Background = new SolidColorBrush(Color.FromRgb(24, 85, 114));
+                WindowBorder.BorderBrush = new SolidColorBrush(Color.FromRgb(33, 69, 65));
+                FirstGrid.Background = new SolidColorBrush(Color.FromRgb(65, 139, 130));
+                SecondGrid.Background = new SolidColorBrush(Color.FromRgb(79, 168, 158));
+
+                MenuBtn.Style = (Style)FindResource("ButtonStyleGreen");
+                SearchBtn.Style = (Style)FindResource("ButtonStyleGreen");
+                LibraryBtn.Style = (Style)FindResource("ButtonStyleGreen");
+                SettingsBtn.Style = (Style)FindResource("ButtonStyleGreen");
+                UserBtn.Style = (Style)FindResource("ButtonStyleGreen");
+                MinimBtn.Style = (Style)FindResource("ButtonStyleGreen");
+                CloseBtn.Style = (Style)FindResource("ButtonStyleGreen");
             }
         }
         void StringsSet()

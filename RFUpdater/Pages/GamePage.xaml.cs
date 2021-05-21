@@ -6,6 +6,7 @@ using System.IO;
 using System.IO.Compression;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.Windows.Media;
 
 namespace RFUpdater
 {
@@ -122,7 +123,23 @@ namespace RFUpdater
 
             InfoRead();
 
+            ChangeTheme();
+
             //MessageBox.Show("" + GameUpdateUri);
+        }
+
+        void ChangeTheme()
+        {
+            if(Properties.Settings.Default.ThemeNum == 0)
+            {
+                InstallBtn.Style = (Style)FindResource("ButtonStyleGreen");
+                DeleteBtn.Style = (Style)FindResource("ButtonStyleGreen");
+                LikeBtn.Style = (Style)FindResource("ButtonStyleGreen");
+                DisLikeBtn.Style = (Style)FindResource("ButtonStyleGreen");
+                GameInfoHideBtn.Style = (Style)FindResource("ButtonStyleGreen");
+
+                GameReleaseStatusTextBlock.Foreground = new SolidColorBrush(Color.FromRgb(97, 214, 200));
+            }
         }
 
         async void InfoRead()

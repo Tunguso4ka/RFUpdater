@@ -10,11 +10,11 @@
 
     <Grid>
         <StackPanel>
-            <Grid Height="20" Margin="5">
+            <Grid Height="25" Margin="5">
                 <TextBox Width="390" Name="SearchTextBox" TextChanged="SearchTextBox_TextChanged"/>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                    <Button Width="20" Style="{StaticResource ButtonStyleBlack}" Content="" FontFamily="Segoe MDL2 Assets" Name="ClearSearchBtn" Click="ClearSearchBtn_Click" Visibility="Collapsed"/>
-                    <Button Width="20" Style="{StaticResource ButtonStyleBlack}" Content="" FontFamily="Segoe MDL2 Assets" Name="StartSearchBtn" Click="StartSearchBtn_Click"/>
+                    <Button Width="20" Style="{StaticResource ButtonStylePink}" Content="" FontFamily="Segoe MDL2 Assets" Name="ClearSearchBtn" Click="ClearSearchBtn_Click" Visibility="Collapsed"/>
+                    <Button Width="20" Style="{StaticResource ButtonStylePink}" Content="" FontFamily="Segoe MDL2 Assets" Name="StartSearchBtn" Click="StartSearchBtn_Click"/>
                 </StackPanel>
             </Grid>
             <ScrollViewer Height="320" VerticalScrollBarVisibility="Hidden">

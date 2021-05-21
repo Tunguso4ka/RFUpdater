@@ -33,15 +33,15 @@
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="App theme:" Style="{StaticResource GPTextBlockWhite}"/>
                 <Separator Margin="3,0"/>
-                <RadioButton Content="White" Name="LRB4" Foreground="White"/>
+                <RadioButton Content="Green" Name="LRB4" Foreground="White"/>
                 <Separator Margin="3,0"/>
-                <RadioButton Content="Dark" Name="LRB5" Foreground="White"/>
+                <RadioButton Content="Pink" Name="LRB5" Foreground="White"/>
                 <Separator Margin="3,0"/>
-                <RadioButton Content="Standart Blue" Name="LRB6" Foreground="White" IsEnabled="False"/>
+                <RadioButton Content="Blue" Name="LRB6" Foreground="White" IsEnabled="False"/>
             </StackPanel>
-            <Button Content="Log out" Style="{StaticResource ButtonStyleWhite}" Name="LogOutBtn" Click="LogOutBtn_Click" Width="100" HorizontalAlignment="Left"/>
-            <Button Content="About" Style="{StaticResource ButtonStyleWhite}" Name="AboutBtn" Click="AboutBtn_Click" Width="100" HorizontalAlignment="Left"/>
-            <Button Content="Save and restart app" Name="SaveBtn" Click="SaveBtn_Click" Style="{StaticResource ButtonStyleWhite}" Width="auto" HorizontalAlignment="Left"/>
+            <Button Content="Log out" Style="{StaticResource ButtonStylePink}" Name="LogOutBtn" Click="LogOutBtn_Click" Width="100" HorizontalAlignment="Left"/>
+            <Button Content="About" Style="{StaticResource ButtonStylePink}" Name="AboutBtn" Click="AboutBtn_Click" Width="100" HorizontalAlignment="Left"/>
+            <Button Content="Save and restart app" Name="SaveBtn" Click="SaveBtn_Click" Style="{StaticResource ButtonStylePink}" Width="auto" HorizontalAlignment="Left"/>
         </StackPanel>
     </ScrollViewer>
 </Page>
