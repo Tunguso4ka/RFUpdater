@@ -72,7 +72,7 @@
     <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Resources\rfulogo0516ico.ico</ApplicationIcon>
+    <ApplicationIcon>Resources\rfulogo0525_lcM_icon.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject>RFUpdater.App</StartupObject>
@@ -261,6 +261,10 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\rfulogo0516ico.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\rfulogo0525.png" />
+    <Resource Include="Resources\rfulogo0525_lcM_icon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
