@@ -91,6 +91,16 @@ namespace RFUpdater.Properties {
         }
         
         /// <summary>
+        ///   Vyhledává lokalizovaný prostředek typu System.Drawing.Icon podobný (Ikona).
+        /// </summary>
+        internal static System.Drawing.Icon rfulogo0525ico {
+            get {
+                object obj = ResourceManager.GetObject("rfulogo0525ico", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Vyhledá lokalizovaný řetězec podobný .
         /// </summary>
         internal static string String {

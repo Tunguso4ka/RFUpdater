@@ -31,6 +31,7 @@ namespace RFUpdater
         public SearchPage ASearchPage;
         public UserPage AUserPage;
         public LoginPage ALoginPage;
+        public LoadingWindow ALoadingWindow;
 
 
         //ints
@@ -41,6 +42,9 @@ namespace RFUpdater
         public MainWindow()
         {
             InitializeComponent();
+
+            //ALoadingWindow = new LoadingWindow();
+            //ALoadingWindow.Show();
 
             CreateNotifyIcon();
 
@@ -59,6 +63,9 @@ namespace RFUpdater
                 Directory.CreateDirectory(Properties.Settings.Default.AppDataPath + @"Games\");
             }
             Checks();
+
+            Frame0.Navigate(AStartPage);
+            //ALoadingWindow.Close();
         }
 
         private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -85,7 +92,6 @@ namespace RFUpdater
             AuthorizCheck();
             ThemeSet();
             Pages();
-            Frame0.Content = AStartPage;
         }
 
         void SettingsSearch()
@@ -256,9 +262,9 @@ namespace RFUpdater
 
             _StripMenuItemAppName.Text = "RFUpdater";
             _StripMenuItemAppName.Enabled = false;
-            _StripMenuItemAppName.Image = Properties.Resources.rfulogo0516;
+            _StripMenuItemAppName.Image = Properties.Resources.rfulogo0525ico;
 
-            notifyIcon.Icon = Properties.Resources.rfulogo0516ico;
+            notifyIcon.Icon = Properties.Resources.rfulogo0525ico;
             notifyIcon.ContextMenuStrip = _ContextMenuStrip;
             notifyIcon.Text = "RFUpdater";
             notifyIcon.Visible = true;

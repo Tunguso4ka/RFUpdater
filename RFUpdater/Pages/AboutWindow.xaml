@@ -10,6 +10,7 @@
         mc:Ignorable="d"
         MouseLeftButtonDown="Window_MouseLeftButtonDown"
         Title="About RFUpdater" Height="200" Width="300">
+    
     <Border BorderBrush="#7b2cbf" BorderThickness="3">
         <Grid Background="#10002b">
             <Grid.RowDefinitions>

@@ -127,6 +127,9 @@
   <data name="rfulogo0516ico" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\rfulogo0516ico.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="rfulogo0525ico" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\rfulogo0525ico.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="String" xml:space="preserve">
     <value />
   </data>
