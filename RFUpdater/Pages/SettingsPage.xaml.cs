@@ -122,6 +122,8 @@ namespace RFUpdater
 
             //restart app
             new MainWindow().Show();
+
+            ((MainWindow)Window.GetWindow(this)).KillNotifyIcon();
             Window.GetWindow(this).Close();
         }
 

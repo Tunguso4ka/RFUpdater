@@ -31,7 +31,6 @@ namespace RFUpdater
         public SearchPage ASearchPage;
         public UserPage AUserPage;
         public LoginPage ALoginPage;
-        public LoadingWindow ALoadingWindow;
 
 
         //ints
@@ -42,9 +41,6 @@ namespace RFUpdater
         public MainWindow()
         {
             InitializeComponent();
-
-            //ALoadingWindow = new LoadingWindow();
-            //ALoadingWindow.Show();
 
             CreateNotifyIcon();
 
@@ -65,7 +61,6 @@ namespace RFUpdater
             Checks();
 
             Frame0.Navigate(AStartPage);
-            //ALoadingWindow.Close();
         }
 
         private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -262,7 +257,7 @@ namespace RFUpdater
 
             _StripMenuItemAppName.Text = "RFUpdater";
             _StripMenuItemAppName.Enabled = false;
-            _StripMenuItemAppName.Image = Properties.Resources.rfulogo0525ico;
+            _StripMenuItemAppName.Image = Properties.Resources.rfulogo0525;
 
             notifyIcon.Icon = Properties.Resources.rfulogo0525ico;
             notifyIcon.ContextMenuStrip = _ContextMenuStrip;
@@ -336,6 +331,11 @@ namespace RFUpdater
         {
             notifyIcon.Dispose();
             Application.Current.Dispatcher.Invoke(Application.Current.Shutdown);
+        }
+
+        public void KillNotifyIcon()
+        {
+            notifyIcon.Dispose();
         }
     }
 }

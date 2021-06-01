@@ -91,12 +91,32 @@ namespace RFUpdater.Properties {
         }
         
         /// <summary>
+        ///   Vyhledává lokalizovaný prostředek typu System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap rfulogo0525 {
+            get {
+                object obj = ResourceManager.GetObject("rfulogo0525", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Vyhledává lokalizovaný prostředek typu System.Drawing.Icon podobný (Ikona).
         /// </summary>
         internal static System.Drawing.Icon rfulogo0525ico {
             get {
                 object obj = ResourceManager.GetObject("rfulogo0525ico", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Vyhledává lokalizovaný prostředek typu System.Byte[].
+        /// </summary>
+        internal static byte[] streetphenomena {
+            get {
+                object obj = ResourceManager.GetObject("streetphenomena", resourceCulture);
+                return ((byte[])(obj));
             }
         }
         
