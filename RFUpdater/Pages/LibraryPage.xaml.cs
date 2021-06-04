@@ -187,7 +187,7 @@ namespace RFUpdater
             RandomFightsPage = new GamePage(this);
             //string gameName, Version newGameVersion, !Version thisGameVersion, !string gamePath, string gameUpdateUrl
             //MessageBox.Show(newGameVersion + "", "0");
-            ((MainWindow)Window.GetWindow(this)).Frame0.Content = RandomFightsPage;
+            ((MainWindow)Window.GetWindow(this)).Frame0.Navigate(RandomFightsPage);
 
         }
 

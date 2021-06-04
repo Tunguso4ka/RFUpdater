@@ -6,6 +6,8 @@ using System.Windows;
 using Forms = System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Reflection;
+using System.Diagnostics;
 
 namespace RFUpdater
 {
@@ -136,6 +138,20 @@ namespace RFUpdater
                     StreamReader.Dispose();
                 }
                 File.Delete(RFUUpdateInfoPath);
+
+                switch (NewRFUVersion.CompareTo(Assembly.GetExecutingAssembly().GetName().Version))
+                {
+                    case 0:
+                         //такая же
+                        break;
+                    case 1:
+                        if (File.Exists(Properties.Settings.Default.AppDataPath + "RFUI.exe"))
+                        {
+                            Process.Start(Properties.Settings.Default.AppDataPath + "RFUI.exe");
+                        }
+                         //новее
+                        break;
+                }
             }
             catch
             {
