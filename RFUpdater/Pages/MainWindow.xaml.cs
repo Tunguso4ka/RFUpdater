@@ -8,6 +8,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Reflection;
 using System.Diagnostics;
+using System.Windows.Controls;
 
 namespace RFUpdater
 {
@@ -201,55 +202,72 @@ namespace RFUpdater
             DownGamesPath = Properties.Settings.Default.AppDataPath + "gamesonthispc.dat";
         }
 
-        private void SettingsBtn_Click(object sender, RoutedEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Frame0.Content = ASettingsPage;
-        }
-
-        private void LibraryBtn_Click(object sender, RoutedEventArgs e)
-        {
-            Frame0.Content = ALibraryPage;
-        }
-
-        private void CloseBtn_Click(object sender, RoutedEventArgs e)
-        {
-            if (Properties.Settings.Default.Installing == false)
+            Button ClickedButton = (Button)sender;
+            if((string)ClickedButton.Tag == "Settings")
+            {
+                Frame0.Navigate(ASettingsPage);
+            }
+            else if ((string)ClickedButton.Tag == "Library")
+            {
+                Frame0.Navigate(ALibraryPage);
+            }
+            else if ((string)ClickedButton.Tag == "Close")
+            {
+                if (Properties.Settings.Default.Installing == false)
+                {
+                    this.WindowState = WindowState.Minimized;
+                    this.ShowInTaskbar = false;
+                }
+                else
+                {
+                    this.WindowState = WindowState.Minimized;
+                    MessageBox.Show("You can't close Updater while it doing its work.");
+                }
+            }
+            else if ((string)ClickedButton.Tag == "Minimize")
             {
                 this.WindowState = WindowState.Minimized;
-                this.ShowInTaskbar = false;
             }
-            else
+            else if ((string)ClickedButton.Tag == "Maximize")
             {
-                this.WindowState = WindowState.Minimized;
-                System.Windows.MessageBox.Show("You can't close Updater while he doing hes work.");
+                if (this.WindowState == WindowState.Maximized)
+                {
+                    this.WindowState = WindowState.Normal;
+                    ClickedButton.Content = "";
+                }
+                else
+                {
+                    this.WindowStyle = WindowStyle.SingleBorderWindow;
+                    this.WindowState = WindowState.Maximized;
+                    ClickedButton.Content = "";
+                    this.WindowStyle = WindowStyle.None;
+                }
             }
-        }
-
-        private void MenuBtn_Click(object sender, RoutedEventArgs e)
-        {
-            Frame0.Content = AStartPage;
-        }
-
-        private void MinimBtn_Click(object sender, RoutedEventArgs e)
-        {
-            this.WindowState = WindowState.Minimized;
-        }
-
-        private void UserBtn_Click(object sender, RoutedEventArgs e)
-        {
-            if (Properties.Settings.Default.UserAuthorizited == true)
+            else if ((string)ClickedButton.Tag == "Menu")
             {
-                Frame0.Content = AUserPage;
+                Frame0.Navigate(AStartPage);
             }
-            else
+            else if ((string)ClickedButton.Tag == "User")
             {
-                Frame0.Content = ALoginPage;
+                if (Properties.Settings.Default.UserAuthorizited == true)
+                {
+                    Frame0.Navigate(AUserPage);
+                }
+                else
+                {
+                    Frame0.Navigate(ALoginPage);
+                }
             }
-        }
-
-        private void SearchBtn_Click(object sender, RoutedEventArgs e)
-        {
-            Frame0.Content = ASearchPage;
+            else if ((string)ClickedButton.Tag == "Search")
+            {
+                Frame0.Navigate(ASearchPage);
+            }
+            else if ((string)ClickedButton.Tag == "Messages")
+            {
+                //Frame0.Navigate(MessagesPage);
+            }
         }
 
         private void CreateNotifyIcon()
@@ -310,6 +328,17 @@ namespace RFUpdater
 
             notifyIcon.MouseDown += new Forms.MouseEventHandler(NotifyIconClicked);
             
+        }
+
+        private void Window_StateChanged(object sender, EventArgs e)
+        {
+            if (this.WindowState == WindowState.Maximized)
+            {
+                this.WindowStyle = WindowStyle.SingleBorderWindow;
+                this.WindowState = WindowState.Maximized;
+                MaximizeBtn.Content = "";
+                this.WindowStyle = WindowStyle.None;
+            }
         }
 
         /* 

@@ -10,41 +10,47 @@
 
     <ScrollViewer VerticalScrollBarVisibility="Hidden">
         <StackPanel>
-            <StackPanel Orientation="Horizontal">
+            <StackPanel>
                 <TextBlock Text="Language:" Style="{StaticResource GPTextBlockWhite}"/>
-                <Separator Margin="3,0"/>
                 <RadioButton Content="English" Name="LRB0" Foreground="White"/>
-                <Separator Margin="3,0"/>
                 <RadioButton Content="Русский" Name="LRB1" Foreground="White"/>
+                <Separator Margin="0,3"/>
             </StackPanel>
-            <Separator Margin="0,3"/>
-            <StackPanel Orientation="Horizontal">
+
+            <StackPanel>
                 <CheckBox Content="Autoupdate" Name="CB0" Foreground="White"/>
+                <Separator Margin="0,3"/>
             </StackPanel>
-            <Separator Margin="0,3"/>
-            <StackPanel Orientation="Horizontal">
+
+            <StackPanel>
                 <TextBlock Text="Select folder:" Style="{StaticResource GPTextBlockWhite}"/>
-                <Separator Margin="3,0"/>
                 <RadioButton Content="C:\Games\" Name="LRB2" Foreground="White"/>
-                <Separator Margin="3,0"/>
                 <RadioButton Content="D:\Games\" Name="LRB3" Foreground="White"/>
+                <StackPanel Orientation="Horizontal">
+                    <Button Content="" Style="{StaticResource ButtonStylePink}" Name="OpenFolderBtn" Click="Button_Click" Width="30" HorizontalAlignment="Left" FontFamily="Segoe MDL2 Assets" MouseEnter="OpenFolderBtn_MouseEnter" MouseLeave="OpenFolderBtn_MouseLeave" Tag="OpenFolder"/>
+                    <TextBox Text="" MinWidth="200"/>
+                </StackPanel>
+                <Separator Margin="0,3"/>
             </StackPanel>
-            <Separator Margin="0,3"/>
-            <StackPanel Orientation="Horizontal">
+
+            <StackPanel>
                 <TextBlock Text="App theme:" Style="{StaticResource GPTextBlockWhite}"/>
-                <Separator Margin="3,0"/>
                 <RadioButton Content="Green" Name="LRB4" Foreground="White"/>
-                <Separator Margin="3,0"/>
                 <RadioButton Content="Pink" Name="LRB5" Foreground="White"/>
-                <Separator Margin="3,0"/>
                 <RadioButton Content="Blue" Name="LRB6" Foreground="White" IsEnabled="False"/>
+                <Separator Margin="0,3"/>
             </StackPanel>
-            <StackPanel Orientation="Horizontal">
+
+            <StackPanel>
                 <CheckBox Content="Start with windows" Name="CB1" Foreground="White"/>
+                <Separator Margin="0,3"/>
             </StackPanel>
-            <Button Content="Log out" Style="{StaticResource ButtonStylePink}" Name="LogOutBtn" Click="LogOutBtn_Click" Width="100" HorizontalAlignment="Left"/>
-            <Button Content="About" Style="{StaticResource ButtonStylePink}" Name="AboutBtn" Click="AboutBtn_Click" Width="100" HorizontalAlignment="Left"/>
-            <Button Content="Save and restart app" Name="SaveBtn" Click="SaveBtn_Click" Style="{StaticResource ButtonStylePink}" Width="auto" HorizontalAlignment="Left"/>
+
+            <StackPanel Orientation="Horizontal">
+                <Button Content="Log out" Style="{StaticResource ButtonStylePink}" Name="LogOutBtn" Click="Button_Click" Width="100" HorizontalAlignment="Left" Tag="LogOut"/>
+                <Button Content="About" Style="{StaticResource ButtonStylePink}" Name="AboutBtn" Click="Button_Click" Width="100" HorizontalAlignment="Left" Tag="About"/>
+                <Button Content="Save and restart app" Name="SaveBtn" Click="Button_Click" Style="{StaticResource ButtonStylePink}" Width="auto" HorizontalAlignment="Left" Tag="Save"/>
+            </StackPanel>
         </StackPanel>
     </ScrollViewer>
 </Page>

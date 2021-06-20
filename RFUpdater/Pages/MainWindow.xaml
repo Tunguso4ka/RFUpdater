@@ -5,42 +5,49 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RFUpdater"
         mc:Ignorable="d"
+        
         WindowStyle="None"
-        ResizeMode="NoResize"
+        ResizeMode="CanResize"
         ShowInTaskbar="True"
-        AllowsTransparency="True"
-        Background="Transparent"
         WindowStartupLocation="CenterScreen"
+        
         MouseLeftButtonDown="Window_MouseLeftButtonDown"
-        Title="RFUpdater" Height="500" Width="600">
-
+        StateChanged="Window_StateChanged"
+        
+        Title="RFUpdater" 
+        
+        MinHeight="200" MinWidth="300"
+        Height="500" Width="600"
+        >
+    <WindowChrome.WindowChrome>
+        <WindowChrome NonClientFrameEdges="None" GlassFrameThickness="5" ResizeBorderThickness="5" CaptionHeight="0">
+        </WindowChrome>
+    </WindowChrome.WindowChrome>
     <Border Name="WindowBorder" BorderBrush="#7b2cbf" BorderThickness="3">
         <Grid>
-            <Grid Background="#10002b" Name="FirstGrid">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="25"/>
-                    <RowDefinition/>
-                </Grid.RowDefinitions>
-                <Grid Grid.Row="1" Background="#240046" Name="SecondGrid">
-                    <Frame Name="Frame0" NavigationUIVisibility="Hidden" Margin="5"/>
-                </Grid>
+            <Grid Background="#10002b" Name="FirstGrid" VerticalAlignment="Top">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                    <Button Content="&#xEA8A;" Name="MenuBtn" Click="Button_Click" Style="{StaticResource ButtonStylePink}" FontFamily="Segoe MDL2 Assets" ToolTipService.ToolTip="Menu" Tag="Menu"/>
+                    <Button Content="" x:Name="SearchBtn" Click="Button_Click" Style="{StaticResource ButtonStylePink}" FontFamily="Segoe MDL2 Assets" ToolTipService.ToolTip="Search" Visibility="Collapsed" Tag="Search"/>
+                    <Button Content="" Name="LibraryBtn" Click="Button_Click" Style="{StaticResource ButtonStylePink}" FontFamily="Segoe MDL2 Assets" ToolTipService.ToolTip="Your games" Tag="Library"/>
+                    <Button Content="&#xF8B0;" Name="SettingsBtn" Click="Button_Click" Style="{StaticResource ButtonStylePink}" FontFamily="Segoe MDL2 Assets" ToolTipService.ToolTip="Settings" Tag="Settings"/>
+                    <Button Content="" x:Name="UserBtn" Click="Button_Click" Style="{StaticResource ButtonStylePink}" FontFamily="Segoe MDL2 Assets" ToolTipService.ToolTip="Authorize" Visibility="Collapsed" Tag="User"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                    <Button Content="" x:Name="MessagesBtn" Click="Button_Click" Style="{StaticResource ButtonStylePink}" FontFamily="Segoe MDL2 Assets" ToolTipService.ToolTip="Messages" Visibility="Collapsed" Tag="Messages"/>
+                    <Button Content="" x:Name="MinimBtn" Click="Button_Click" Style="{StaticResource ButtonStylePink}" FontFamily="Segoe MDL2 Assets" ToolTipService.ToolTip="Minimize" Tag="Minimize"/>
+                    <Button Content="" x:Name="MaximizeBtn" Click="Button_Click" Style="{StaticResource ButtonStylePink}" FontFamily="Segoe MDL2 Assets" ToolTipService.ToolTip="Maximize" Tag="Maximize"/>
+                    <Button Content="" x:Name="CloseBtn" Click="Button_Click" Style="{StaticResource ButtonStylePink}" FontFamily="Segoe MDL2 Assets" ToolTipService.ToolTip="Close" Tag="Close"/>
+                </StackPanel>
             </Grid>
-
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Top">
-                <Button Content="" Name="MenuBtn" Click="MenuBtn_Click" Style="{StaticResource ButtonStylePink}" FontFamily="Segoe MDL2 Assets" ToolTipService.ToolTip="Menu"/>
-                <Button Content="" x:Name="SearchBtn" Click="SearchBtn_Click" Style="{StaticResource ButtonStylePink}" FontFamily="Segoe MDL2 Assets" ToolTipService.ToolTip="Search" Visibility="Collapsed"/>
-                <Button Content="" Name="LibraryBtn" Click="LibraryBtn_Click" Style="{StaticResource ButtonStylePink}" FontFamily="Segoe MDL2 Assets" ToolTipService.ToolTip="Your games"/>
-                <Button Content="" Name="SettingsBtn" Click="SettingsBtn_Click" Style="{StaticResource ButtonStylePink}" FontFamily="Segoe MDL2 Assets" ToolTipService.ToolTip="Settings"/>
-            </StackPanel>
-
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top">
-                <Button Content="" x:Name="UserBtn" Click="UserBtn_Click" Style="{StaticResource ButtonStylePink}" FontFamily="Segoe MDL2 Assets" ToolTipService.ToolTip="Authorize" Visibility="Collapsed"/>
-                <Button Content="" x:Name="MinimBtn" Click="MinimBtn_Click" Style="{StaticResource ButtonStylePink}" FontFamily="Segoe MDL2 Assets" ToolTipService.ToolTip="Minimize"/>
-                <Button Content="" x:Name="CloseBtn" Click="CloseBtn_Click" Style="{StaticResource ButtonStylePink}" FontFamily="Segoe MDL2 Assets" ToolTipService.ToolTip="Close"/>
-            </StackPanel>
-
+            <Grid Margin="0,25,0,0" Background="#240046" Name="SecondGrid">
+                <Frame Name="Frame0" NavigationUIVisibility="Hidden" Margin="5"/>
+            </Grid>
+            
             <ProgressBar HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Background="Transparent" Foreground="#9d4edd" Height="15" BorderBrush="#7b2cbf" Visibility="Collapsed" Name="MainProgressBar"/>
             <TextBlock Style="{StaticResource GPTextBlockWhite}" Text="0%" HorizontalAlignment="Center" VerticalAlignment="Bottom" Visibility="Collapsed" Name="ProgressTextBlock"/>
+            
         </Grid>
     </Border>
 </Window>
